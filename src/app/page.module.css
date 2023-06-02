@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+.heroitem {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1rem;
+}
+.herodesc {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.herotitle {
+  font-size: 72px;
+  background: linear-gradient(to bottom, #194c33, #bbb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
