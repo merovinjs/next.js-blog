@@ -11,12 +11,12 @@ export const metadata = {
 const Contact = () => {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Let's Keep in Touch</h1>
+      <h1 className={styles.title}>Let Keep in Touch</h1>
       <div className={styles.content}>
         <div className={styles.imgContainer}>
           <Image
             src="/contact.png"
-            alt=""
+            alt="contact"
             fill={true}
             className={styles.image}
           />
@@ -30,7 +30,7 @@ const Contact = () => {
             cols="30"
             rows="10"
           ></textarea>
-          <Button url="#" text="Send" />
+          <Button url="/" text="Send" />
         </form>
       </div>
     </div>
