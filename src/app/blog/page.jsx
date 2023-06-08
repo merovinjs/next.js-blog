@@ -2,20 +2,23 @@ import React from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
+
 async function getData() {
-  const res = await fetch(`http://localhost:3000/api/posts`, {
-    cache: "no-cache",
+  const res = await fetch("http://localhost:3000/api/posts", {
+    cache: "no-store",
   });
+
   if (!res.ok) {
-    throw new Error("Something went wrong");
+    throw new Error("Failed to fetch data");
   }
-  const data = await res.json();
-  return data;
+
+  return res.json();
 }
+
 const Blog = async () => {
   const data = await getData();
   return (
-    <div className={styles.MainContainer}>
+    <div className={styles.mainContainer}>
       {data.map((item) => (
         <Link
           href={`/blog/${item._id}`}
@@ -24,16 +27,16 @@ const Blog = async () => {
         >
           <div className={styles.imageContainer}>
             <Image
-              className={styles.image}
               src={item.img}
-              alt="blog"
-              width={450}
+              alt=""
+              width={400}
               height={250}
+              className={styles.image}
             />
           </div>
           <div className={styles.content}>
-            <h1 className={styles.title}>{item.body}</h1>
-            <p className={styles.desc}>{item.title}</p>
+            <h1 className={styles.title}>{item.title}</h1>
+            <p className={styles.desc}>{item.desc}</p>
           </div>
         </Link>
       ))}
