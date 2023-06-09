@@ -4,8 +4,8 @@ import Image from "next/image";
 import Button from "@/components/Button/Button";
 
 export const metadata = {
-  title: "Lama Dev Contact Information",
-  description: "This is Contact Page",
+  title: "oldbee.dev contact",
+  description: "benimle iletişime geçebilirsinizkk",
 };
 
 const Contact = () => {
