@@ -9,7 +9,7 @@ export default function Home() {
         <h1 className={styles.herotitle}>Welcome to the NFT Marketplace</h1>
         <p className={styles.herodesc}>
           {" "}
-          Explore the world of NFTs and buy and sell your favorite NFTs{" "}
+          Explore the world of NFTs and buy and sell your favorite NFTs here{" "}
         </p>
         <Button url="/home" text="Explore NFTs"></Button>
       </div>
