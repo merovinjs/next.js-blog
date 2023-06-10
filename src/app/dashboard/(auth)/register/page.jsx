@@ -25,7 +25,9 @@ const Register = () => {
         }),
       });
       res.status === 201 &&
-        router.push("/dashboard/login?success=Account has been created ");
+        router.push(
+          "https://oldbee.netlify.app/dashboard/login?success=Account has been created "
+        );
     } catch (error) {
       setErr(true);
     }
@@ -55,7 +57,9 @@ const Register = () => {
         <button className={styles.button}>Register</button>
       </form>
       {err && "something went wrong"}
-      <Link href="/dashboard/login">Login with existing account</Link>
+      <Link href="https://oldbee.netlify.app/dashboard/login">
+        Login with existing account
+      </Link>
     </div>
   );
 };

@@ -12,7 +12,7 @@ const Login = () => {
     return <p>Loading</p>;
   }
   if (session.status === "authenticated") {
-    router?.push("/dashboard");
+    router?.push("https://oldbee.netlify.app/dashboard");
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +39,9 @@ const Login = () => {
           />
           <button className={styles.button}>Register</button>
         </form>
-        <Link href="/dashboard/login">Login with existing account</Link>
+        <Link href="https://oldbee.netlify.app/dashboard/login">
+          Login with existing account
+        </Link>
       </div>
 
       <button onClick={() => signIn("github")}>Login with github</button>
