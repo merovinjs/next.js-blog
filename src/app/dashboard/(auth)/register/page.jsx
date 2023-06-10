@@ -1,10 +1,34 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 const Register = () => {
-  const handleSubmit = (e) => {
+  const [err, setErr] = useState(false);
+  const router = useRouter();
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const name = e.target[0].value;
+    const email = e.target[1].value;
+    const password = e.target[2].value;
+
+    try {
+      const res = await fetch("https://oldbee.netlify.app/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
+      });
+      res.status === 201 &&
+        router.push("/dashboard/login?success=Account has been created ");
+    } catch (error) {
+      setErr(true);
+    }
   };
 
   return (
@@ -30,6 +54,7 @@ const Register = () => {
         />
         <button className={styles.button}>Register</button>
       </form>
+      {err && "something went wrong"}
       <Link href="/dashboard/login">Login with existing account</Link>
     </div>
   );

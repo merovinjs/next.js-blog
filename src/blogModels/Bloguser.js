@@ -25,9 +25,9 @@ const userSchema = new Schema(
 
 let Bloguser;
 try {
-  Bloguser = mongoose.model("Blogpost");
+  Bloguser = mongoose.model("Bloguser");
 } catch {
-  Bloguser = mongoose.model("Blogpost", userSchema);
+  Bloguser = mongoose.model("Bloguser", userSchema);
 }
 
-export default Blogpost;
+export default Bloguser;
