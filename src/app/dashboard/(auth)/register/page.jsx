@@ -13,7 +13,7 @@ const Register = () => {
     const password = e.target[2].value;
 
     try {
-      const res = await fetch("https://oldbee.netlify.app/api/auth/register", {
+      const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,9 +25,7 @@ const Register = () => {
         }),
       });
       res.status === 201 &&
-        router.push(
-          "https://oldbee.netlify.app/dashboard/login?success=Account has been created "
-        );
+        router.push("/dashboard/login?success=Account has been created ");
     } catch (error) {
       setErr(true);
     }
@@ -57,9 +55,7 @@ const Register = () => {
         <button className={styles.button}>Register</button>
       </form>
       {err && "something went wrong"}
-      <Link href="https://oldbee.netlify.app/dashboard/login">
-        Login with existing account
-      </Link>
+      <Link href="/dashboard/login">Login with existing account</Link>
     </div>
   );
 };
