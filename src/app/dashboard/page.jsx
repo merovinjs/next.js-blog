@@ -42,7 +42,7 @@ const Dashboard = () => {
     const content = e.target[3].value;
 
     try {
-      await fetch("http://localhost:3000/api/posts", {
+      await fetch("https://oldbee.netlify.app/api/posts", {
         method: "POST",
         body: JSON.stringify({
           title,
