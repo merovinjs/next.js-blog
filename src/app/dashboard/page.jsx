@@ -1,93 +1,82 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import styles from "./page.module.css";
+import { useState } from "react";
+import styles from "./FormPage.module.css";
 
-import { useRouter } from "next/navigation";
-
-const Dashboard = () => {
-  //OLD WAY TO FETCH DATA
-
-  // const [data, setData] = useState([]);
-  // const [err, setErr] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
-
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     setIsLoading(true);
-  //     const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-  //       cache: "no-store",
-  //     });
-
-  //     if (!res.ok) {
-  //       setErr(true);
-  //     }
-
-  //     const data = await res.json()
-
-  //     setData(data);
-  //     setIsLoading(false);
-  //   };
-  //   getData()
-  // }, []);
-
-  const router = useRouter();
-
-  //NEW WAY TO FETCH DATA
+export default function FormPage() {
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [img, setImg] = useState("");
+  const [content, setContent] = useState("");
+  const [username, setUsername] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const title = e.target[0].value;
-    const desc = e.target[1].value;
-    const img = e.target[2].value;
-    const content = e.target[3].value;
-
-    try {
-      await fetch("https://oldbee.netlify.app/api/posts", {
-        method: "POST",
-        body: JSON.stringify({
-          title,
-          desc,
-          img,
-          content,
-          username: "admin",
-        }),
-      });
-
-      e.target.reset();
-    } catch (err) {
-      console.log(err);
-    }
+    const res = await fetch("/api/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        desc,
+        img,
+        content,
+        username,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
   };
 
-  // const handleDelete = async (id) => {
-  //   try {
-  //     await fetch(`/api/posts/${id}`, {
-  //       method: "DELETE",
-  //     });
-  //     mutate();
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   return (
-    <div className={styles.container}>
-      <div className={styles.posts}></div>
-      <form className={styles.new} onSubmit={handleSubmit}>
-        <h1>Add New Post</h1>
-        <input type="text" placeholder="Title" className={styles.input} />
-        <input type="text" placeholder="Desc" className={styles.input} />
-        <input type="text" placeholder="Image" className={styles.input} />
-        <textarea
-          placeholder="Content"
-          className={styles.textArea}
-          cols="30"
-          rows="10"
-        ></textarea>
-        <button className={styles.button}>Send</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className={styles.new}>
+      <label htmlFor="title">Title:</label>
+      <input
+        type="text"
+        id="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className={styles.input}
+      />
+      <br />
+      <label htmlFor="desc">Description:</label>
+      <input
+        type="text"
+        id="desc"
+        value={desc}
+        onChange={(e) => setDesc(e.target.value)}
+        className={styles.input}
+      />
+      <br />
+      <label htmlFor="img">Image:</label>
+      <input
+        type="text"
+        id="img"
+        value={img}
+        onChange={(e) => setImg(e.target.value)}
+        className={styles.input}
+      />
+      <br />
+      <label htmlFor="content">Content:</label>
+      <textarea
+        id="content"
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        className={`${styles.input} ${styles.textArea}`}
+      />
+      <br />
+      <label htmlFor="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        className={styles.input}
+      />
+      <br />
+      <button type="submit" className={styles.button}>
+        Submit
+      </button>
+    </form>
   );
-};
-
-export default Dashboard;
+}
