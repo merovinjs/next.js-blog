@@ -14,18 +14,23 @@ export const GET = async (request) => {
   }
 };
 
-export const POST = async (request) => {
-  const body = await request.json();
-
-  const newPost = new Blogpost(body);
-
+export const POST = async (req, res) => {
   try {
-    await connectDB();
-
-    await newPost.create();
-
-    return new NextResponse("Post has been created", { status: 201 });
+    if (req.method === "POST") {
+      await connectDB();
+      const { title, desc, img, content, username } = req.body;
+      const post = await Blogpost.create({
+        title,
+        desc,
+        img,
+        content,
+        username,
+      });
+      return NextResponse.created().json({ message: "Post created" });
+    }
   } catch (err) {
-    return new NextResponse("Database Error", { status: 500 });
+    return NextResponse.methodNotAllowed().json({
+      message: "Method not allowed",
+    });
   }
 };
