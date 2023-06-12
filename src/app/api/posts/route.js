@@ -1,36 +1,38 @@
+import { NextResponse } from "next/server";
 import Blogpost from "@/blogModels/Blogpost";
 import connectDB from "@/utilty/db";
 
-import { NextResponse } from "next/server";
-
 export const GET = async (request) => {
+  const url = new URL(request.url);
+
+  const username = url.searchParams.get("username");
+
   try {
     await connectDB();
-    const posts = await Blogpost.find();
+
+    const posts = await Blogpost.find(username && { username });
 
     return new NextResponse(JSON.stringify(posts), { status: 200 });
-  } catch (error) {
-    return new NextResponse("data eroro", { status: 500 });
+  } catch (err) {
+    return new NextResponse("Database Error", { status: 500 });
   }
 };
 
-export const POST = async (req, res) => {
+export const POST = async (request) => {
+  const body = await request.json();
+
+  const newPost = new Blogpost(body);
+
   try {
-    if (req.method === "POST") {
-      await connectDB();
-      const { title, desc, img, content, username } = req.body;
-      const post = await Blogpost.create({
-        title,
-        desc,
-        img,
-        content,
-        username,
-      });
-      return NextResponse.created({ message: "Post created" });
-    }
+    await connectDB();
+
+    await newPost.save();
+
+    return new NextResponse(
+      JSON.stringify({ message: "Post has been created" }),
+      { status: 201 }
+    );
   } catch (err) {
-    return NextResponse.methodNotAllowed().json({
-      message: "Method not allowed",
-    });
+    return new NextResponse("Database Error", { status: 500 });
   }
 };
