@@ -26,7 +26,7 @@ export const POST = async (req, res) => {
         content,
         username,
       });
-      return NextResponse.created().json({ message: "Post created" });
+      return NextResponse.created({ message: "Post created" });
     }
   } catch (err) {
     return NextResponse.methodNotAllowed().json({
