@@ -20,6 +20,7 @@ export const POST = async (request) => {
     await newPost.save();
     return new NextResponse("post created", { status: 201 });
   } catch (error) {
+    console.log(error);
     return new NextResponse("error", { status: 500 });
   }
 };

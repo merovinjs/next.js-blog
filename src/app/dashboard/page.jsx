@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import styles from "./page.module.css";
+import { useSession } from "next-auth/react";
 
 export default function FormPage() {
   const [title, setTitle] = useState("");
@@ -27,6 +28,9 @@ export default function FormPage() {
     const data = await res.json();
     console.log(data);
   };
+
+  const session = useSession();
+  console.log(session);
 
   return (
     <form onSubmit={handleSubmit} className={styles.new}>
