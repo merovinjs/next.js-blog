@@ -17,8 +17,8 @@ const links = [
   },
   {
     id: 3,
-    path: "/contact",
-    text: "Contact",
+    path: "/blog",
+    text: "Blog",
   },
   {
     id: 4,
@@ -29,11 +29,6 @@ const links = [
     id: 5,
     path: "/portfolio",
     text: "Portfolio",
-  },
-  {
-    id: 6,
-    path: "/blog",
-    text: "Blog",
   },
 ];
 const Navbar = () => {
