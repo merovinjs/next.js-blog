@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 export default function FormPage() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -68,7 +69,8 @@ export default function FormPage() {
       console.log(error);
     }
   };
-
+  const session = useSession();
+  console.log(session);
   return (
     <div className={styles.container}>
       <div className={styles.posts}>
