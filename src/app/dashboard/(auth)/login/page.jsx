@@ -17,16 +17,22 @@ const Login = () => {
     router?.push("/dashboard");
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
 
-    signIn("credentials", {
+    const result = await signIn("credentials", {
       email,
       password,
+      redirect: false,
     });
-    router.push("/dashboard");
+
+    if (result?.error) {
+      // Handle error
+    } else {
+      router.push("/dashboard");
+    }
   };
 
   return (
