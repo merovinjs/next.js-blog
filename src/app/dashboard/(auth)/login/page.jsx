@@ -26,6 +26,7 @@ const Login = () => {
       email,
       password,
     });
+    router.push("/dashboard");
   };
 
   return (
