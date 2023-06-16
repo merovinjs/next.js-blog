@@ -46,7 +46,6 @@ const Login = () => {
           className={styles.input}
         />
         <button className={styles.button}>Login</button>
-        {error && error}
       </form>
 
       <span className={styles.or}>- OR -</span>
