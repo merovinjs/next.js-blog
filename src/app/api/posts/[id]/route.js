@@ -17,6 +17,7 @@ export const GET = async (request, { params }) => {
 };
 export const DELETE = async (request, { params }) => {
   const { id } = params;
+  console.log(id);
   try {
     await connectDB();
     await Blogpost.findByIdAndDelete(id);
@@ -25,6 +26,7 @@ export const DELETE = async (request, { params }) => {
       headers: { "Access-Control-Allow-Origin": "*" },
     });
   } catch (error) {
+    console.log(error);
     return new NextResponse("error", { status: 500 });
   }
 };

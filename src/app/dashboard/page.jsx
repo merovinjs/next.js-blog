@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
-
+import { useRouter } from "next/navigation";
 export default function FormPage() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -10,6 +10,8 @@ export default function FormPage() {
   const [content, setContent] = useState("");
   const [username, setUsername] = useState("");
   const [data, setData] = useState([]);
+
+  const router = useRouter();
 
   useEffect(() => {
     async function getData() {
@@ -43,16 +45,27 @@ export default function FormPage() {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    if (res.ok) {
+      setDesc("");
+      setImg("");
+      setTitle("");
+      setContent("");
+      setUsername("");
+      router.push("/blog");
+    } else {
+      console.log("hata");
+    }
   };
   const handleDelete = async (id) => {
     const response = await fetch(`/api/posts/${id}`, {
       method: "DELETE",
     });
-    if (response.ok) {
-      // handle successful deletion
-    } else {
-      // handle error
+    try {
+      if (response.ok) {
+        setData((prevData) => prevData.filter((post) => post._id !== id));
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 

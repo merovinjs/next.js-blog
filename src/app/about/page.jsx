@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Button from "@/components/Button/Button";
+import Canvas from "@/components/canvas/canvas";
 const Page = () => {
   return (
     <div className={styles.container}>
@@ -55,6 +56,7 @@ const Page = () => {
           <Button url="/contact" text="Contact" />
         </div>
       </div>
+      <Canvas />
     </div>
   );
 };
