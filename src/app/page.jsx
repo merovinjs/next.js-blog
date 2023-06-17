@@ -11,7 +11,7 @@ export default function Home() {
           {" "}
           Explore the world of NFTs and buy and sell your favorite NFTs here{" "}
         </p>
-        <Button url="/home" text="Explore NFTs"></Button>
+        <Button url="/" text="Explore NFTs"></Button>
       </div>
       <div className={styles.heroitem}>
         <Image src={Hero} alt="Hero" width={500} height={500} />
