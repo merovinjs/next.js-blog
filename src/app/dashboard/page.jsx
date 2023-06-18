@@ -9,9 +9,11 @@ export default function FormPage() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [img, setImg] = useState("");
+  const [id, setId] = useState(null);
   const [content, setContent] = useState("");
   const [username, setUsername] = useState("");
   const [data, setData] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
 
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -38,7 +40,6 @@ export default function FormPage() {
   }, [session, status]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     const res = await fetch("/api/posts", {
       method: "POST",
       headers: {
@@ -59,11 +60,48 @@ export default function FormPage() {
       setTitle("");
       setContent("");
       setUsername("");
-      router.push("/blog");
     } else {
       console.log("hata");
     }
   };
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    console.log("handleEdit called with id:", id);
+    const data = {
+      title,
+      desc,
+      img,
+      content,
+      username,
+    };
+    console.log("Sending data to API:", data);
+    const res = await fetch(`/api/posts/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (res.ok) {
+      console.log("Update successful");
+      // handle successful update
+    } else {
+      console.log("Update failed with status:", res.status);
+      // handle error
+    }
+  };
+
+  const handleEditClick = (post) => {
+    // set form values to post data
+    setId(post._id);
+    setTitle(post.title);
+    setDesc(post.desc);
+    setImg(post.img);
+    setContent(post.content);
+    setUsername(post.username);
+    setIsEditing(true);
+  };
+
   const handleDelete = async (id) => {
     const response = await fetch(`/api/posts/${id}`, {
       method: "DELETE",
@@ -92,11 +130,20 @@ export default function FormPage() {
               >
                 X
               </span>
+              <span
+                className={styles.delete}
+                onClick={() => handleEditClick(post)}
+              >
+                O
+              </span>
             </div>
           ))}
         </div>
 
-        <form onSubmit={handleSubmit} className={styles.new}>
+        <form
+          onSubmit={isEditing ? handleEdit : handleSubmit}
+          className={styles.new}
+        >
           <label htmlFor="title">Title:</label>
           <input
             type="text"

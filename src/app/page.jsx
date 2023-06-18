@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Hero from "public/hero.png";
 import styles from "./page.module.css";
 import Button from "@/components/Button/Button";
+
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -14,7 +14,14 @@ export default function Home() {
         <Button url="/" text="Explore NFTs"></Button>
       </div>
       <div className={styles.heroitem}>
-        <Image src={Hero} alt="Hero" width={500} height={500} />
+        <Image
+          src={"/hero.png"}
+          alt="Hero"
+          placeholder="blur"
+          blurDataURL={"/hero.png"}
+          width={500}
+          height={500}
+        />
       </div>
     </div>
   );

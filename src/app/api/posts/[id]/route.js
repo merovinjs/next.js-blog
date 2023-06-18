@@ -30,3 +30,18 @@ export const DELETE = async (request, { params }) => {
     return new NextResponse("error", { status: 500 });
   }
 };
+export const PUT = async (request, { params, body }) => {
+  const { id } = params;
+  console.log("Updating post with id:", id, "and data:", body);
+  try {
+    await connectDB();
+    await Blogpost.findByIdAndUpdate(id, body);
+    return new NextResponse("Post has been updated", {
+      status: 200,
+      headers: { "Access-Control-Allow-Origin": "*" },
+    });
+  } catch (error) {
+    console.log(error);
+    return new NextResponse("error", { status: 500 });
+  }
+};
