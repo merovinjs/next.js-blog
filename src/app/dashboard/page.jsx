@@ -64,10 +64,10 @@ export default function FormPage() {
       console.log("hata");
     }
   };
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    console.log("handleEdit called with id:", id);
+  const handleEdit = async () => {
+    //console.log("handleEdit called with id:", id);
     const data = {
+      id,
       title,
       desc,
       img,
@@ -83,8 +83,12 @@ export default function FormPage() {
       body: JSON.stringify(data),
     });
     if (res.ok) {
-      console.log("Update successful");
-      // handle successful update
+      setDesc("");
+      setImg("");
+      setTitle("");
+      setContent("");
+      setUsername("");
+      router.refresh();
     } else {
       console.log("Update failed with status:", res.status);
       // handle error
@@ -121,7 +125,13 @@ export default function FormPage() {
           {data?.map((post) => (
             <div className={styles.post} key={post._id}>
               <div className={styles.imgContainer}>
-                <Image alt="" src={post.img} width={200} height={100}></Image>
+                <Image
+                  alt={post.title}
+                  src={post.img}
+                  width={200}
+                  height={100}
+                  priority
+                ></Image>
               </div>
               <h2 className={styles.postTitle}>{post.title}</h2>
               <span
