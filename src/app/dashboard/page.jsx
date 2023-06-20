@@ -1,9 +1,14 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { RiDeleteBin5Fill } from "react-icons/ri";
+import { BiEditAlt } from "react-icons/bi";
 import { useSession } from "next-auth/react";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
+const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
 export default function FormPage() {
   const [title, setTitle] = useState("");
@@ -105,7 +110,9 @@ export default function FormPage() {
     setUsername(post.username);
     setIsEditing(true);
   };
-
+  const EditorChange = (e) => {
+    setContent(e);
+  };
   const handleDelete = async (id) => {
     const response = await fetch(`/api/posts/${id}`, {
       method: "DELETE",
@@ -123,29 +130,33 @@ export default function FormPage() {
       <div className={styles.container}>
         <div className={styles.posts}>
           {data?.map((post) => (
-            <div className={styles.post} key={post._id}>
+            <div className={styles.postContainer} key={post._id}>
               <div className={styles.imgContainer}>
                 <Image
                   alt={post.title}
                   src={post.img}
-                  width={200}
-                  height={100}
+                  fill={true}
                   priority
                 ></Image>
               </div>
-              <h2 className={styles.postTitle}>{post.title}</h2>
-              <span
-                className={styles.delete}
-                onClick={() => handleDelete(post._id)}
-              >
-                X
-              </span>
-              <span
-                className={styles.delete}
-                onClick={() => handleEditClick(post)}
-              >
-                O
-              </span>
+              <div className={styles.postBody}>
+                <h3 className={styles.postTitle}>{post.title}</h3>
+
+                <div className={styles.spanContainer}>
+                  <span
+                    className={`${styles.span} ${styles.spanDelete}`}
+                    onClick={() => handleDelete(post._id)}
+                  >
+                    Sil <RiDeleteBin5Fill />
+                  </span>
+                  <span
+                    className={`${styles.span} ${styles.spanEdit}`}
+                    onClick={() => handleEditClick(post)}
+                  >
+                    Düzenle <BiEditAlt />
+                  </span>
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -182,12 +193,16 @@ export default function FormPage() {
           />
           <br />
           <label htmlFor="content">Content:</label>
-          <textarea
+
+          <ReactQuill
             id="content"
+            theme="snow"
             value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className={`${styles.input} ${styles.textArea}`}
+            onChange={EditorChange}
           />
+
+          <br />
+          <br />
           <br />
           <label htmlFor="username">Username:</label>
           <input
