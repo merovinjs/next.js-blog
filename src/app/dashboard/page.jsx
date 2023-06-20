@@ -6,9 +6,7 @@ import { useRouter } from "next/navigation";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import { useSession } from "next-auth/react";
-import dynamic from "next/dynamic";
-import "react-quill/dist/quill.snow.css";
-const ReactQuill = dynamic(import("react-quill"), { ssr: false });
+import TextEditör from "@/components/TextEditor/TextEditör";
 
 export default function FormPage() {
   const [title, setTitle] = useState("");
@@ -110,9 +108,7 @@ export default function FormPage() {
     setUsername(post.username);
     setIsEditing(true);
   };
-  const EditorChange = (e) => {
-    setContent(e);
-  };
+
   const handleDelete = async (id) => {
     const response = await fetch(`/api/posts/${id}`, {
       method: "DELETE",
@@ -125,6 +121,7 @@ export default function FormPage() {
       console.log(error);
     }
   };
+
   if (status === "authenticated") {
     return (
       <div className={styles.container}>
@@ -193,14 +190,7 @@ export default function FormPage() {
           />
           <br />
           <label htmlFor="content">Content:</label>
-
-          <ReactQuill
-            id="content"
-            theme="snow"
-            value={content}
-            onChange={EditorChange}
-          />
-
+          <TextEditör value={content} onChange={(value) => setContent(value)} />
           <br />
           <br />
           <br />

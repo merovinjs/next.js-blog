@@ -25,6 +25,7 @@ export async function generateMetadata({ params }) {
 
 const BlogPost = async ({ params }) => {
   const data = await getData(params.id);
+  const markup = { __html: data.content };
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -47,7 +48,7 @@ const BlogPost = async ({ params }) => {
         </div>
       </div>
       <div className={styles.content}>
-        <p className={styles.text}>{data.content}</p>
+        <div className={styles.text} dangerouslySetInnerHTML={markup} />
       </div>
     </div>
   );
