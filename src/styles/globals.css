@@ -1,0 +1,132 @@
+:root {
+  --white: #fff;
+  --light-gray: rgba(255, 255, 255, 0.42);
+  --gray: #777;
+  --black: #111;
+  --dark-blue: #005571;
+  --rich-black: #03071eff;
+  --chocolate-cosmos: #370617ff;
+  --rosewood: #6a040fff;
+  --penn-red: #9d0208ff;
+  --engineering-orange: #d00000ff;
+  --sinopia: #dc2f02ff;
+  --persimmon: #e85d04ff;
+  --princeton-orange: #f48c06ff;
+  --orange-web: #faa307ff;
+  --selective-yellow: #ffba08ff;
+}
+:root {
+  --mozillablue: #8cb4ff;
+  --mozillagray: #343434;
+  --mozillalightgray: #858585;
+  --mozillablack: #1b1b1b;
+  --mozillagrenn: #06bd5c;
+  --mozillared: #ff707f;
+  --mozillawhite: #ffffff;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Raleway:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+  background-color: transparent;
+  color: var(--mozillawhite);
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+.primary-button {
+  cursor: pointer;
+
+  color: var(--selective-yellow);
+  font-size: larger;
+  font-weight: bolder;
+  background: linear-gradient(
+    -45deg,
+    var(--orange-web),
+    var(--sinopia),
+    var(--princeton-orange)
+  );
+  background-size: 400% 400%;
+  animation: gradient-bg 5s ease infinite;
+
+  padding: 12px 48px;
+  border-radius: 999px;
+}
+@-webkit-keyframes gradient-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: "Raleway", sans-serif;
+  font: inherit;
+  outline: none;
+  border: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  font-family: "Raleway", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: var(--orange-web);
+}
+p {
+  color: var(--orange-web);
+}
+body {
+  background-color: transparent;
+}
+div {
+  color: beige;
+}
+.theme {
+  transition: 1s all ease;
+}
+.light {
+  background-color: white;
+  color: #111;
+}
+.dark {
+  background-color: #111;
+  color: white;
+}

@@ -1,24 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
 .container {
-  height: 100px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 6fr 1fr 1fr;
   align-items: center;
-  z-index: 1;
+  height: 8rem;
+  padding: 24px;
+  font-size: larger;
 }
+
 .logo {
-  font-weight: bold;
-  font-size: 24px;
+  font-family: "Dancing Script", cursive;
+  font-size: xx-large;
+  font-weight: 800;
 }
+
 .links {
   display: flex;
-  align-items: center;
-  gap: 1rem;
 }
-.logout {
-  border: none;
-  background-color: #53c28b;
-  color: white;
-  padding: 5px;
-  cursor: pointer;
-  border-radius: 3px;
+
+.link {
+  margin: 0 1rem;
+}
+
+.close_btn {
+  display: none;
+}
+
+.nav_btn {
+  display: none;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.links {
+  display: flex;
+}
+
+.link {
+  margin: 0 1rem;
+}
+
+.close_btn {
+  display: none;
+}
+
+.nav_btn {
+  display: none;
+}
+
+@media (max-width: 524px) {
+  .container {
+    display: grid;
+    grid-template-columns: 6fr 1fr 1fr;
+  }
+  .nav_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aqua;
+    cursor: pointer;
+    font-size: 24px;
+    background-color: transparent;
+  }
+  .links {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    max-width: 300px;
+    background-color: white;
+    z-index: 1;
+    padding: 1rem;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+  }
+  .responsive_nav {
+    padding-top: 15px;
+    display: flex;
+    font-size: 16px;
+    background-color: #545454;
+    color: rgb(4, 4, 8);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .responsive_nav a {
+    font-size: x-large;
+    color: #53c28b;
+    padding: 5px 15px;
+    text-decoration: none;
+  }
+
+  .responsive_nav a:hover {
+    border-radius: 8px;
+
+    animation: hoverAnimation 1s forwards;
+  }
+
+  @keyframes hoverAnimation {
+    from {
+      background-color: transparent;
+      color: #53c28b;
+    }
+    to {
+      background-color: gold;
+      color: rgb(107, 0, 0);
+    }
+  }
+
+  .close_btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: red;
+    font-size: xx-large;
+  }
 }

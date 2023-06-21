@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./page.module.css";
 import DarkModeToggle from "../darkModeToggle/DarkModeToggle";
 import { useRouter } from "next/navigation";
+import { FaBars, FaTimes } from "react-icons/fa";
 const links = [
   {
     id: 1,
@@ -32,20 +33,41 @@ const links = [
   },
 ];
 const Navbar = () => {
+  const navRef = useRef();
+
+  const showNavbar = () => {
+    navRef.current.classList.toggle(styles.responsive_nav);
+  };
   const router = useRouter();
   return (
     <div className={styles.container}>
       <Link href={"/"} className={styles.logo}>
-        logo
+        OLD BEE
       </Link>
-      <div className={styles.links}>
+      <div className={styles.toggle}>
         <DarkModeToggle />
+      </div>
+      <nav ref={navRef} className={styles.links}>
         {links.map((link) => (
-          <Link className={styles.link} key={link.id} href={link.path}>
+          <Link
+            onClick={showNavbar}
+            className={styles.link}
+            key={link.id}
+            href={link.path}
+          >
             {link.text}
           </Link>
         ))}
-      </div>
+        <button
+          className={styles.close_btn + " " + styles.nav_btn}
+          onClick={showNavbar}
+        >
+          <FaTimes />
+        </button>
+      </nav>
+      <button className={styles.nav_btn} onClick={showNavbar}>
+        <FaBars />
+      </button>
     </div>
   );
 };
