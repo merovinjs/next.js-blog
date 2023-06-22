@@ -44,9 +44,7 @@ const Navbar = () => {
       <Link href={"/"} className={styles.logo}>
         OLD BEE
       </Link>
-      <div className={styles.toggle}>
-        <DarkModeToggle />
-      </div>
+
       <nav ref={navRef} className={styles.links}>
         {links.map((link) => (
           <Link
@@ -68,6 +66,9 @@ const Navbar = () => {
       <button className={styles.nav_btn} onClick={showNavbar}>
         <FaBars />
       </button>
+      <div className={styles.toggle}>
+        <DarkModeToggle />
+      </div>
     </div>
   );
 };

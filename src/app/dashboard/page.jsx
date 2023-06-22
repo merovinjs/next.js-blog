@@ -137,7 +137,11 @@ export default function FormPage() {
                 ></Image>
               </div>
               <div className={styles.postBody}>
-                <h3 className={styles.postTitle}>{post.title}</h3>
+                <h3 className={styles.postTitle}>
+                  {post.title.length > 45
+                    ? post.title.slice(0, 45) + "..."
+                    : post.title}
+                </h3>
 
                 <div className={styles.spanContainer}>
                   <span

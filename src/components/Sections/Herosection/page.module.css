@@ -19,7 +19,7 @@
   object-fit: contain;
 }
 .desc {
-  padding-top: 1rem;
+  padding: 1rem;
   max-width: 450px;
   gap: 2rem;
   display: flex;

@@ -6,12 +6,15 @@ const Herosection = () => {
   return (
     <div className={styles.container}>
       <div className={styles.desc}>
-        <h1 className={styles.herotitle}>Welcome to the NFT Marketplace</h1>
+        <h1 className={styles.herotitle}>
+          Welcome to my blog. Here I create Frontend content.
+        </h1>
         <p className={styles.herodesc}>
           {" "}
-          Explore the world of NFTs and buy and sell your favorite NFTs here{" "}
+          Explore the content I have created for frontend developers, such as
+          button, cart, navbar designs and much more.{" "}
         </p>
-        <Button url="/" text="Explore NFTs"></Button>
+        <Button url="/blog" text="Discover now"></Button>
       </div>
       <div className={styles.heroitem}>
         <Image

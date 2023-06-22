@@ -1,8 +1,11 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Button from "@/components/Button/Button";
+import Featuresection from "@/components/Sections/Featuresection/Featuresection";
 import Herosection from "@/components/Sections/Herosection/Herosection";
 
 export default function Home() {
-  return <Herosection />;
+  return (
+    <>
+      <Herosection />
+      <Featuresection />
+    </>
+  );
 }

@@ -3,20 +3,28 @@
   grid-template-columns: 1fr 4fr;
   gap: 15px;
 }
+.posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+}
 .postContainer {
+  width: 330px;
   display: flex;
   align-items: center;
   justify-content: left;
   padding: 5px 10px;
+  margin-bottom: 8px;
   background-color: #545454;
 }
 .postTitle {
-  margin-top: 4px;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  width: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
 .imgContainer {
   flex-shrink: 0;
   position: relative;
