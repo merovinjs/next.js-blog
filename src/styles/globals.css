@@ -130,3 +130,11 @@ div {
   background-color: #111;
   color: white;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  flex: 1;
+}
