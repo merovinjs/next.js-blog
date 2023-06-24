@@ -8,10 +8,22 @@
 }
 .heroitem {
   width: 100%;
-  max-width: 450px;
+  max-width: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: updown 8s infinite;
+}
+@keyframes updown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.5cm);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 .heroitem img {
   width: fit-content;

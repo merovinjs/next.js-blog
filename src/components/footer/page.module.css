@@ -1,11 +1,16 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .container {
   height: 50px;
   font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  z-index: 1;
+  width: 90%;
 }
 .imgContainer {
   display: flex;
@@ -15,4 +20,16 @@
 }
 .logo {
   opacity: 0.5;
+}
+.lightFooter {
+  background-color: lightgray;
+  .p {
+    color: #191327;
+  }
+}
+.darkFooter {
+  background-color: #191327;
+  .p {
+    color: rgb(119, 143, 163);
+  }
 }
