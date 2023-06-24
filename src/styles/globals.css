@@ -132,9 +132,14 @@ div {
 }
 
 .container {
+  width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 .main {
   flex: 1;
+  width: 90%;
+  margin-bottom: 16px;
 }
