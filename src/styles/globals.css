@@ -136,10 +136,12 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
   flex-direction: column;
 }
 .main {
   flex: 1;
   width: 90%;
-  margin-bottom: 16px;
+  height: 100vh;
+  margin-bottom: 36px;
 }
