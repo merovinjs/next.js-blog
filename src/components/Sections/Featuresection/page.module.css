@@ -14,7 +14,7 @@
   justify-content: left;
   padding: 5px 10px;
   margin-bottom: 8px;
-  background-color: #0d1117;
+  background-color: #53c38b;
 }
 
 .imgContainer {
@@ -37,8 +37,14 @@
 }
 .postTitle {
   font-size: 24px;
-  color: #2e7ced;
+  color: var(--mozillawhite);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .postDesc {
-  color: lightgray;
+  color: var(--mozillagray);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
