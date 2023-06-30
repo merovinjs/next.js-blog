@@ -31,6 +31,12 @@ const links = [
     path: "/portfolio",
     text: "Portfolio",
   },
+  ,
+  {
+    id: 6,
+    path: "/editor",
+    text: "Examples",
+  },
 ];
 const Navbar = () => {
   const navRef = useRef();
