@@ -11,21 +11,10 @@
 .hyper {
   display: grid;
   place-items: center;
-  background: linear-gradient(
-    -180deg,
-    #370617ff,
-    #6a040fff,
-    #9d0208ff,
-    #d00000ff,
-    #dc2f02ff,
-    #e85d04ff,
-    #f48c06ff,
-    #faa307ff,
-    #ffba08ff
-  );
+  border: 6px dashed gray;
+  background-color: transparent;
   margin: 0rem;
   overflow: hidden;
-  border-radius: clamp(0.4rem, 0.75vw, 1rem);
 }
 
 .h4 {
@@ -36,18 +25,4 @@
   color: white;
   padding: 0rem clamp(2.9rem, 2vw, 2.5rem);
   border-radius: clamp(0.4rem, 0.75vw, 1rem);
-}
-.h4:hover {
-  background: linear-gradient(
-    180deg,
-    #ffba08ff,
-    #faa307ff,
-    #f48c06ff,
-    #e85d04ff,
-    #dc2f02ff,
-    #d00000ff,
-    #9d0208ff,
-    #6a040fff,
-    #370617ff
-  );
 }
