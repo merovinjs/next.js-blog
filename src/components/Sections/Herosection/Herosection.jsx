@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./page.module.css";
-import Button from "@/components/Button/Button";
 import Image from "next/image";
+import Button2 from "@/components/Button/Button2";
+import Link from "next/link";
 const Herosection = () => {
   return (
     <div className={styles.container}>
@@ -14,7 +15,6 @@ const Herosection = () => {
           Explore the content I have created for frontend developers, such as
           button, cart, navbar designs and much more.{" "}
         </p>
-        <Button url="/blog" text="Discover now"></Button>
       </div>
       <div className={styles.heroitem}>
         <Image
@@ -25,6 +25,9 @@ const Herosection = () => {
           width={500}
           height={500}
         />
+        <Link className={styles.button} href="./examples">
+          <Button2 />
+        </Link>
       </div>
     </div>
   );
