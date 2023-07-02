@@ -9,6 +9,10 @@ const Button2 = () => {
         <h4 className={styles.h4} data-value="DISCOVER">
           DISCOVER
         </h4>
+        <span className={styles.top}></span>
+        <span className={styles.right}></span>
+        <span className={styles.bottom}></span>
+        <span className={styles.left}></span>
       </div>
 
       <Script src="js/hyperplexed.js"></Script>

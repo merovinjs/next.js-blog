@@ -11,8 +11,6 @@
 .hyper {
   display: grid;
   place-items: center;
-  border: 6px dashed gray;
-  background-color: transparent;
   margin: 0rem;
   overflow: hidden;
 }
@@ -22,7 +20,35 @@
   letter-spacing: 4px;
   font-family: "Space Mono", monospace;
   font-size: clamp(2rem, 5vw, 4rem);
-  color: white;
+  color: var(--selective-yellow);
+  text-shadow: 2px 2px 4px #53c28b;
   padding: 0rem clamp(2.9rem, 2vw, 2.5rem);
   border-radius: clamp(0.4rem, 0.75vw, 1rem);
+}
+
+.bottom {
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  background: linear-gradient(
+    0deg,
+    rgb(57, 255, 20),
+    rgba(57, 255, 20, 0.5),
+    transparent 50%
+  );
+}
+
+.bottom {
+  animation: animateBottom 3s ease-in-out infinite;
+}
+
+@keyframes animateBottom {
+  0% {
+    opacity: 0.1;
+    width: 0%;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
 }

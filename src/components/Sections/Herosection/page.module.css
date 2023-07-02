@@ -13,7 +13,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: updown 8s infinite;
 }
 @keyframes updown {
   0% {
@@ -30,6 +29,8 @@
   width: fit-content;
   height: fit-content;
   object-fit: contain;
+
+  animation: updown 8s infinite;
 }
 .desc {
   padding: 1rem;
