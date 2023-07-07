@@ -25,7 +25,7 @@ const Herosection = () => {
           width={500}
           height={500}
         />
-        <Link className={styles.button} href="./examples">
+        <Link className={styles.button} href="./editor">
           <Button2 />
         </Link>
       </div>
