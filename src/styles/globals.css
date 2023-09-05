@@ -35,7 +35,7 @@
 html,
 body {
   background-color: transparent;
-  color: var(--mozillawhite);
+
   font-size: 14px;
   line-height: 1.5;
   font-family: "Open Sans", sans-serif;
@@ -116,9 +116,7 @@ p {
 body {
   background-color: transparent;
 }
-div {
-  color: beige;
-}
+
 .theme {
   transition: 1s all ease;
 }

@@ -16,7 +16,6 @@
   justify-content: left;
   padding: 5px 10px;
   margin-bottom: 8px;
-  background-color: #545454;
 }
 .postTitle {
   width: 96px;
@@ -68,10 +67,10 @@
 .input,
 .textArea {
   padding: 10px;
-  background-color: transparent;
+
   border: 2px solid #bbb;
   border-radius: 3px;
-  color: #bbb;
+
   font-size: 20px;
   font-weight: bold;
 }

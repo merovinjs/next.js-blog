@@ -5,14 +5,9 @@
   gap: 20px;
 }
 
-.title {
-  color: #bbb;
-}
-
 .subtitle {
   font-size: 20px;
   margin-bottom: 30px;
-  color: #bbb;
 }
 
 .form {
@@ -28,7 +23,7 @@
   border: 2px solid #bbb;
   border-radius: 5px;
   outline: none;
-  color: #bbb;
+
   font-size: 20px;
   font-weight: bold;
 }
@@ -40,7 +35,7 @@
   background-color: #53c28b;
   border: none;
   border-radius: 5px;
-  color: #eee;
+
   font-weight: bold;
 }
 
@@ -48,17 +43,12 @@
   background-color: #49b07d;
 }
 
-.or {
-  color: #bbb;
-}
-
 .link {
   text-decoration: underline;
-  color: #7d7c7c;
 }
 
 .link:hover {
-  color: rgb(61, 61, 61);
+  color: rgb(61, 233, 8);
 }
 
 .google {
