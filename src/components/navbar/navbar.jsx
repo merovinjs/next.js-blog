@@ -14,7 +14,7 @@ const links = [
   {
     id: 2,
     path: "/about",
-    text: "About",
+    text: "Aboutd",
   },
   {
     id: 3,
@@ -53,19 +53,11 @@ const Navbar = () => {
 
       <nav ref={navRef} className={styles.links}>
         {links.map((link) => (
-          <Link
-            onClick={showNavbar}
-            className={styles.link}
-            key={link.id}
-            href={link.path}
-          >
+          <Link onClick={showNavbar} className={styles.link} key={link.id} href={link.path}>
             {link.text}
           </Link>
         ))}
-        <button
-          className={styles.close_btn + " " + styles.nav_btn}
-          onClick={showNavbar}
-        >
+        <button className={styles.close_btn + " " + styles.nav_btn} onClick={showNavbar}>
           <FaTimes />
         </button>
       </nav>
