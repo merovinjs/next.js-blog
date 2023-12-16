@@ -20,5 +20,8 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.9.0",
     "react-quill": "^2.0.0"
+  },
+  "devDependencies": {
+    "encoding": "^0.1.13"
   }
 }
