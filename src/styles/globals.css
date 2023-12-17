@@ -29,15 +29,16 @@
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 html,
 body {
+  padding: 0;
+  margin: 0;
   background-color: transparent;
-
   font-size: 14px;
   line-height: 1.5;
+  min-height: 100vh;
+  height: auto;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -52,12 +53,7 @@ img {
   color: var(--selective-yellow);
   font-size: larger;
   font-weight: bolder;
-  background: linear-gradient(
-    -45deg,
-    var(--orange-web),
-    var(--sinopia),
-    var(--princeton-orange)
-  );
+  background: linear-gradient(-45deg, var(--orange-web), var(--sinopia), var(--princeton-orange));
   background-size: 400% 400%;
   animation: gradient-bg 5s ease infinite;
 
@@ -113,9 +109,6 @@ a {
 p {
   color: var(--orange-web);
 }
-body {
-  background-color: transparent;
-}
 
 .theme {
   transition: 1s all ease;
@@ -130,16 +123,11 @@ body {
 }
 
 .container {
+  max-width: 1366px;
   width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
   flex-direction: column;
-}
-.main {
-  flex: 1;
-  width: 90%;
-  height: 100vh;
-  margin-bottom: 36px;
+  justify-content: space-between;
 }
