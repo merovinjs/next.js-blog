@@ -9,8 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "oldbee.dev blog",
-  description:
-    "kişisel blogum frontend alanıda yaptığım projeleri ve makaleleri yayınlıyorum",
+  description: "kişisel blogum frontend alanıda yaptığım projeleri ve makaleleri yayınlıyorum",
 };
 
 export default function RootLayout({ children }) {

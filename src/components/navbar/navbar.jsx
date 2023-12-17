@@ -14,7 +14,7 @@ const links = [
   {
     id: 2,
     path: "/about",
-    text: "Aboutd",
+    text: "About",
   },
   {
     id: 3,

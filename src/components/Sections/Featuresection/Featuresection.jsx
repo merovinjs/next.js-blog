@@ -17,25 +17,13 @@ const Featuresection = async () => {
   return (
     <div className={styles.posts}>
       {data?.map((post) => (
-        <Link
-          href={`/blog/${post._id}`}
-          className={styles.postContainer}
-          key={post._id}
-        >
+        <Link href={`/blog/${post._id}`} className={styles.postContainer} key={post._id}>
           <div className={styles.imgContainer}>
             <Image alt={post.title} src={post.img} fill={true} priority></Image>
           </div>
           <div className={styles.postBody}>
-            <h2 className={styles.postTitle}>
-              {post.title.length > 45
-                ? post.title.slice(0, 45) + "..."
-                : post.title}
-            </h2>
-            <h2 className={styles.postDesc}>
-              {post.desc.length > 45
-                ? post.desc.slice(0, 45) + "..."
-                : post.desc}
-            </h2>
+            <h2 className={styles.postTitle}>{post.title.length > 45 ? post.title.slice(0, 45) + "..." : post.title}</h2>
+            <h2 className={styles.postDesc}>{post.desc.length > 45 ? post.desc.slice(0, 45) + "..." : post.desc}</h2>
           </div>
         </Link>
       ))}
