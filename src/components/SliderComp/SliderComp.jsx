@@ -2,6 +2,7 @@
 import React from "react";
 import Script from "next/script";
 import "./slider.css";
+import Image from "next/image";
 
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 const SliderComp = () => {
@@ -9,7 +10,7 @@ const SliderComp = () => {
     <div>
       <div className="card">
         <div>
-          <img className="card-image" src="/1.png" />
+          <Image className="card-image" src="/1.png" alt="card-image" />
         </div>
         <div className="card-body">
           <h5 className="card-title">bmw</h5>
