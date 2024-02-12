@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
+import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 async function getData(id) {
   const res = await fetch(`https://oldbee.netlify.app/api/posts/${id}`, {
@@ -25,7 +27,7 @@ export async function generateMetadata({ params }) {
 
 const BlogPost = async ({ params }) => {
   const data = await getData(params.id);
-  const markup = { __html: data.content };
+  console.log(data);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -33,13 +35,7 @@ const BlogPost = async ({ params }) => {
           <h1 className={styles.title}>{data.title}</h1>
           <p className={styles.desc}>{data.desc}</p>
           <div className={styles.author}>
-            <Image
-              src={data.img}
-              alt=""
-              width={40}
-              height={40}
-              className={styles.avatar}
-            />
+            <Image src={data.img} alt="" width={40} height={40} className={styles.avatar} />
             <span className={styles.username}>{data.username}</span>
           </div>
         </div>
@@ -47,9 +43,15 @@ const BlogPost = async ({ params }) => {
           <Image src={data.img} alt="" fill={true} className={styles.image} />
         </div>
       </div>
-      <div className={styles.content}>
-        <div className={styles.text} dangerouslySetInnerHTML={markup} />
-      </div>
+
+      <SyntaxHighlighter
+        language="jsx"
+        style={darcula}
+        customStyle={{
+          textAlign: "left",
+        }}>
+        {data.content}
+      </SyntaxHighlighter>
     </div>
   );
 };

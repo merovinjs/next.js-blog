@@ -20,7 +20,7 @@
   letter-spacing: 4px;
   font-family: "Space Mono", monospace;
   font-size: clamp(2rem, 5vw, 4rem);
-  color: var(--selective-yellow);
+  color: inherit;
   text-shadow: 2px 2px 4px #53c28b;
   padding: 0rem clamp(2.9rem, 2vw, 2.5rem);
   border-radius: clamp(0.4rem, 0.75vw, 1rem);

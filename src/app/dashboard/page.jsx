@@ -129,31 +129,16 @@ export default function FormPage() {
           {data?.map((post) => (
             <div className={styles.postContainer} key={post._id}>
               <div className={styles.imgContainer}>
-                <Image
-                  alt={post.title}
-                  src={post.img}
-                  fill={true}
-                  priority
-                ></Image>
+                <Image alt={post.title} src={post.img} fill={true} priority></Image>
               </div>
               <div className={styles.postBody}>
-                <h3 className={styles.postTitle}>
-                  {post.title.length > 45
-                    ? post.title.slice(0, 45) + "..."
-                    : post.title}
-                </h3>
+                <h3 className={styles.postTitle}>{post.title.length > 45 ? post.title.slice(0, 45) + "..." : post.title}</h3>
 
                 <div className={styles.spanContainer}>
-                  <span
-                    className={`${styles.span} ${styles.spanDelete}`}
-                    onClick={() => handleDelete(post._id)}
-                  >
+                  <span className={`${styles.span} ${styles.spanDelete}`} onClick={() => handleDelete(post._id)}>
                     Sil <RiDeleteBin5Fill />
                   </span>
-                  <span
-                    className={`${styles.span} ${styles.spanEdit}`}
-                    onClick={() => handleEditClick(post)}
-                  >
+                  <span className={`${styles.span} ${styles.spanEdit}`} onClick={() => handleEditClick(post)}>
                     Düzenle <BiEditAlt />
                   </span>
                 </div>
@@ -162,50 +147,23 @@ export default function FormPage() {
           ))}
         </div>
 
-        <form
-          onSubmit={isEditing ? handleEdit : handleSubmit}
-          className={styles.new}
-        >
+        <form onSubmit={isEditing ? handleEdit : handleSubmit} className={styles.new}>
           <label htmlFor="title">Title:</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className={styles.input}
-          />
+          <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} className={styles.input} />
           <br />
           <label htmlFor="desc">Description:</label>
-          <input
-            type="text"
-            id="desc"
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-            className={styles.input}
-          />
+          <input type="text" id="desc" value={desc} onChange={(e) => setDesc(e.target.value)} className={styles.input} />
           <br />
           <label htmlFor="img">Image:</label>
-          <input
-            type="text"
-            id="img"
-            value={img}
-            onChange={(e) => setImg(e.target.value)}
-            className={styles.input}
-          />
+          <input type="text" id="img" value={img} onChange={(e) => setImg(e.target.value)} className={styles.input} />
           <br />
           <label htmlFor="content">Content:</label>
-          <TextEditör value={content} onChange={(value) => setContent(value)} />
+          <textarea type="text" id="content" value={content} onChange={(e) => setContent(e.target.value)} className={styles.input} />
           <br />
           <br />
           <br />
           <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className={styles.input}
-          />
+          <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className={styles.input} />
           <br />
           <button type="submit" className={styles.button}>
             Submit

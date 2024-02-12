@@ -1,7 +1,7 @@
 import React from "react";
 
 const loading = () => {
-  return <div style={{ color: "white" }}>loading</div>;
+  return <div>loading</div>;
 };
 
 export default loading;

@@ -39,13 +39,12 @@
 }
 .postTitle {
   font-size: 24px;
-  color: var(--mozillawhite);
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .postDesc {
-  color: var(--mozillagray);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
