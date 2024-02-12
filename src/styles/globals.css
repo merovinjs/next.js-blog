@@ -50,7 +50,6 @@ img {
 .primary-button {
   cursor: pointer;
 
-  color: var(--selective-yellow);
   font-size: larger;
   font-weight: bolder;
   background: linear-gradient(-45deg, var(--orange-web), var(--sinopia), var(--princeton-orange));
@@ -104,10 +103,6 @@ a {
 }
 a {
   text-decoration: none;
-  color: var(--orange-web);
-}
-p {
-  color: var(--orange-web);
 }
 
 .theme {
@@ -116,9 +111,17 @@ p {
 .light {
   background-color: white;
   color: #111;
+  a,
+  span {
+    color: var(--mozillablack);
+  }
 }
 .dark {
   background-color: #111;
+  a,
+  span {
+    color: var(--mozillablue);
+  }
   color: white;
 }
 

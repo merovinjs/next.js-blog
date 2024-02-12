@@ -38,17 +38,12 @@ export const PUT = async (request, { params }) => {
   const body = await request.text();
   // console.log("body:", body);
 
-  try {
-    await connectDB();
-    const updatedPost = await Blogpost.findByIdAndUpdate(id, JSON.parse(body));
-    console.log(updatedPost);
+  await connectDB();
+  const updatedPost = await Blogpost.findByIdAndUpdate(id, JSON.parse(body));
+  console.log(updatedPost);
 
-    return new NextResponse("Post has been updated", {
-      status: 200,
-      headers: { "Access-Control-Allow-Origin": "*" },
-    });
-  } catch (error) {
-    console.log(error);
-    return new NextResponse("error", { status: 500 });
-  }
+  return new NextResponse("Post has been updated", {
+    status: 200,
+    headers: { "Access-Control-Allow-Origin": "*" },
+  });
 };

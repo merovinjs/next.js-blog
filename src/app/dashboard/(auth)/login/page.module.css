@@ -23,7 +23,7 @@
   border: 2px solid #bbb;
   border-radius: 5px;
   outline: none;
-
+  color: inherit;
   font-size: 20px;
   font-weight: bold;
 }

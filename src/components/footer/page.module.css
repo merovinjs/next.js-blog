@@ -22,14 +22,14 @@
   opacity: 0.5;
 }
 .lightFooter {
-  background-color: lightgray;
+  background-color: inherit;
   .p {
-    color: #191327;
+    color: inherit;
   }
 }
 .darkFooter {
-  background-color: #191327;
+  background-color: inherit;
   .p {
-    color: rgb(119, 143, 163);
+    color: inherit;
   }
 }

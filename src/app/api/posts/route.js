@@ -19,14 +19,10 @@ export const POST = async (request) => {
 
   await connectDB();
   const newPost = new Blogpost({ title, desc, img, content, username });
-  try {
-    await newPost.save();
-    return new NextResponse(JSON.stringify(newPost), {
-      status: 200,
-      headers: { "Access-Control-Allow-Origin": "*" },
-    });
-  } catch (error) {
-    console.log(error);
-    return new NextResponse("error", { status: 500 });
-  }
+
+  await newPost.save();
+  return new NextResponse(JSON.stringify(newPost), {
+    status: 200,
+    headers: { "Access-Control-Allow-Origin": "*" },
+  });
 };
