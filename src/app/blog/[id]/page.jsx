@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import ClipButton from "@/components/ClipButton/ClipButton";
 
 async function getData(id) {
   const res = await fetch(`https://oldbee.netlify.app/api/posts/${id}`, {
@@ -43,15 +44,21 @@ const BlogPost = async ({ params }) => {
           <Image src={data.img} alt="" fill={true} className={styles.image} />
         </div>
       </div>
-
-      <SyntaxHighlighter
-        language="jsx"
-        style={darcula}
-        customStyle={{
-          textAlign: "left",
-        }}>
-        {data.content}
-      </SyntaxHighlighter>
+      <div className={styles.clipboard}>
+        <div className={styles.clipboardButton}>
+          <ClipButton text={data.content} />
+        </div>
+        <div>
+          <SyntaxHighlighter
+            language="jsx"
+            style={darcula}
+            customStyle={{
+              textAlign: "left",
+            }}>
+            {data.content}
+          </SyntaxHighlighter>
+        </div>
+      </div>
     </div>
   );
 };
