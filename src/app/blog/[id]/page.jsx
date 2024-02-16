@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
-import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import ClipButton from "@/components/ClipButton/ClipButton";
 
 async function getData(id) {
@@ -51,7 +51,7 @@ const BlogPost = async ({ params }) => {
         <div>
           <SyntaxHighlighter
             language="jsx"
-            style={darcula}
+            style={dark}
             customStyle={{
               textAlign: "left",
             }}>
