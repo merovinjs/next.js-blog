@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import { useSession } from "next-auth/react";
-import TextEditör from "@/components/TextEditor/TextEditör";
 
 export default function FormPage() {
   const [title, setTitle] = useState("");
@@ -20,7 +19,8 @@ export default function FormPage() {
 
   const router = useRouter();
   const { data: session, status } = useSession();
-
+  const email = session?.user?.email ?? "E-posta Bulunamadı";
+  console.log(email);
   useEffect(() => {
     if (status === "loading") return;
     if (!session) {
@@ -122,7 +122,7 @@ export default function FormPage() {
     }
   };
 
-  if (status === "authenticated") {
+  if (status === "authenticated" && email === "you@you.com") {
     return (
       <div className={styles.container}>
         <div className={styles.posts}>
@@ -172,6 +172,6 @@ export default function FormPage() {
       </div>
     );
   } else {
-    return null;
+    return <div className={styles.yetkisiz}>Yetkiniz bulunmuyor.Blogumuza katkı sağlamak için yetki isteyiniz.</div>;
   }
 }
