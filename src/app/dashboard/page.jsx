@@ -122,7 +122,7 @@ export default function FormPage() {
     }
   };
 
-  if (status === "authenticated" && email === "you@you.com") {
+  if (status === "authenticated" && email === process.env.Email_admin) {
     return (
       <div className={styles.container}>
         <div className={styles.posts}>
