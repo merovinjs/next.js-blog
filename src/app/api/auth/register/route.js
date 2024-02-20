@@ -27,3 +27,16 @@ export const POST = async (request) => {
     });
   }
 };
+
+export const GET = async (request) => {
+  try {
+    await connectDB();
+    const users = await Bloguser.find();
+    return new NextResponse(JSON.stringify(users), {
+      status: 200,
+      headers: { "Access-Control-Allow-Origin": "*" },
+    });
+  } catch (error) {
+    return new NextResponse("error", { status: 500 });
+  }
+};

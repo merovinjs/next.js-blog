@@ -18,9 +18,9 @@ export default function FormPage() {
   const [isEditing, setIsEditing] = useState(false);
 
   const router = useRouter();
+
   const { data: session, status } = useSession();
-  const email = session?.user?.email ?? "E-posta Bulunamadı";
-  console.log(email);
+
   useEffect(() => {
     if (status === "loading") return;
     if (!session) {
@@ -122,7 +122,7 @@ export default function FormPage() {
     }
   };
 
-  if (status === "authenticated" && email === process.env.Email_admin) {
+  if (status === "authenticated") {
     return (
       <div className={styles.container}>
         <div className={styles.posts}>
