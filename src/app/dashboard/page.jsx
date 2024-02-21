@@ -1,11 +1,13 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
+import { DataGet, GetCurrentUser, UserGet } from "@/customHook/getCurrentUser";
 
 export default function FormPage() {
   const [title, setTitle] = useState("");
@@ -14,34 +16,16 @@ export default function FormPage() {
   const [id, setId] = useState(null);
   const [content, setContent] = useState("");
   const [username, setUsername] = useState("");
-  const [data, setData] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
-
+  const [currentUser, setCurrentUser] = useState("");
   const router = useRouter();
 
   const { data: session, status } = useSession();
-
-  useEffect(() => {
-    if (status === "loading") return;
-    if (!session) {
-      router.push("/dashboard/login");
-    }
-    async function getData() {
-      if (status === "authenticated") {
-        const res = await fetch("https://oldbee.netlify.app/api/posts", {
-          cache: "no-store",
-        });
-
-        if (!res.ok) {
-          throw new Error("Failed to fetch data");
-        }
-
-        setData(await res.json());
-      }
-    }
-    getData();
-  }, [session, status]);
-
+  const { data: dataQuery, isLoading, isError, error } = DataGet();
+  const { data: userQuery, isLoading: userLoading, isError: userError, error: userError2 } = UserGet();
+  const { data: currentUserQuery, isLoading: currentUserLoading, isError: currentUserError, error: currentUserError2 } = GetCurrentUser();
+  console.log("currentUserQuery", currentUserQuery);
+  console.log(currentUser);
   const handleSubmit = async (e) => {
     const res = await fetch("/api/posts", {
       method: "POST",
@@ -122,29 +106,30 @@ export default function FormPage() {
     }
   };
 
-  if (status === "authenticated") {
+  if (status === "authenticated" && userQuery && userQuery[0].role === "admin") {
     return (
       <div className={styles.container}>
         <div className={styles.posts}>
-          {data?.map((post) => (
-            <div className={styles.postContainer} key={post._id}>
-              <div className={styles.imgContainer}>
-                <Image alt={post.title} src={post.img} fill={true} priority></Image>
-              </div>
-              <div className={styles.postBody}>
-                <h3 className={styles.postTitle}>{post.title.length > 45 ? post.title.slice(0, 45) + "..." : post.title}</h3>
+          {dataQuery &&
+            dataQuery?.map((post) => (
+              <div className={styles.postContainer} key={post._id}>
+                <div className={styles.imgContainer}>
+                  <Image alt={post.title} src={post.img} fill={true} priority></Image>
+                </div>
+                <div className={styles.postBody}>
+                  <h3 className={styles.postTitle}>{post.title.length > 45 ? post.title.slice(0, 45) + "..." : post.title}</h3>
 
-                <div className={styles.spanContainer}>
-                  <span className={`${styles.span} ${styles.spanDelete}`} onClick={() => handleDelete(post._id)}>
-                    Sil <RiDeleteBin5Fill />
-                  </span>
-                  <span className={`${styles.span} ${styles.spanEdit}`} onClick={() => handleEditClick(post)}>
-                    Düzenle <BiEditAlt />
-                  </span>
+                  <div className={styles.spanContainer}>
+                    <span className={`${styles.span} ${styles.spanDelete}`} onClick={() => handleDelete(post._id)}>
+                      Sil <RiDeleteBin5Fill />
+                    </span>
+                    <span className={`${styles.span} ${styles.spanEdit}`} onClick={() => handleEditClick(post)}>
+                      Düzenle <BiEditAlt />
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
 
         <form onSubmit={isEditing ? handleEdit : handleSubmit} className={styles.new}>
@@ -171,7 +156,15 @@ export default function FormPage() {
         </form>
       </div>
     );
-  } else {
-    return <div className={styles.yetkisiz}>Yetkiniz bulunmuyor.Blogumuza katkı sağlamak için yetki isteyiniz.</div>;
+  }
+  if (status === "unauthenticated") {
+    return (
+      <div className={styles.yetkisiz}>
+        Yetkiniz bulunmuyor.Blogumuza katkı sağlamak için yetki isteyiniz.
+        <span>
+          <Link href="/">Home</Link>
+        </span>
+      </div>
+    );
   }
 }
