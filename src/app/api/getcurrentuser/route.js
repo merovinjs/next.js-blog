@@ -26,6 +26,7 @@ export const GET = async (request) => {
       headers: { "Access-Control-Allow-Origin": "*" },
     });
   } catch (error) {
+    console.log("ERROR", error);
     return new NextResponse("error", { status: 500 });
   }
 };
