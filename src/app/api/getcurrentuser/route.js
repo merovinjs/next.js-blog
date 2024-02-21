@@ -1,11 +1,12 @@
 import Bloguser from "@/blogModels/Bloguser";
 import connectDB from "@/utilty/db";
 import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
 
-export async function getSession() {
-  return await getServerSession();
-}
-export const GET = async () => {
+export const GET = async (request) => {
+  async function getSession() {
+    return await getServerSession();
+  }
   try {
     await connectDB();
     const session = await getSession();
@@ -20,10 +21,11 @@ export const GET = async () => {
       return "current user bulunamadı";
     }
 
-    return {
-      ...currentUser,
-    };
+    return new NextResponse(JSON.stringify(currentUser), {
+      status: 200,
+      headers: { "Access-Control-Allow-Origin": "*" },
+    });
   } catch (error) {
-    return error;
+    return new NextResponse("error", { status: 500 });
   }
 };
