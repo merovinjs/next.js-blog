@@ -4,10 +4,10 @@ import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
 export const GET = async (request) => {
-  async function getSession() {
-    return await getServerSession();
-  }
   try {
+    async function getSession() {
+      return await getServerSession();
+    }
     await connectDB();
     const session = await getSession();
     if (session?.user?.email) {
