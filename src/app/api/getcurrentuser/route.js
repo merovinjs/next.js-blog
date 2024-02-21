@@ -2,18 +2,13 @@ import Bloguser from "@/blogModels/Bloguser";
 import connectDB from "@/utilty/db";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-
+import { options } from "../auth/[...nextauth]/options";
 export const GET = async (request) => {
   try {
     await connectDB();
-    if (!db) {
-      // Bağlantı başarısızsa hata ver
-      return new NextResponse("Veritabanı bağlantı hatası", { status: 500 });
-    }
-    async function getSession() {
-      return await getServerSession();
-    }
-    const session = await getSession();
+
+    const session = await getServerSession(options);
+
     if (session?.user?.email) {
       return "user bulunamadı";
     }
