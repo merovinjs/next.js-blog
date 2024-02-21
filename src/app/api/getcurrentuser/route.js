@@ -5,10 +5,14 @@ import { NextResponse } from "next/server";
 
 export const GET = async (request) => {
   try {
+    await connectDB();
+    if (!db) {
+      // Bağlantı başarısızsa hata ver
+      return new NextResponse("Veritabanı bağlantı hatası", { status: 500 });
+    }
     async function getSession() {
       return await getServerSession();
     }
-    await connectDB();
     const session = await getSession();
     if (session?.user?.email) {
       return "user bulunamadı";
