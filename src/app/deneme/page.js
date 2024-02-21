@@ -2,9 +2,11 @@ import { getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
 
 const Deneme = async () => {
-  const data = await getServerSession(options);
-
-  console.log(data);
+  const session = await getServerSession(options);
+  const {
+    user: { email },
+  } = session;
+  console.log(email);
 
   return <></>;
 };

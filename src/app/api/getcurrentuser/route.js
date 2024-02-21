@@ -8,13 +8,17 @@ export const GET = async (request) => {
     await connectDB();
 
     const session = await getServerSession(options);
+    const {
+      user: { email },
+    } = session;
+    console.log(email);
 
-    if (session?.user?.email) {
+    if (!email) {
       return "user bulunamadı";
     }
     console.log(session);
     const currentUser = await Bloguser.findOne({
-      email: session?.user?.email,
+      email: email,
     });
     if (!currentUser) {
       return "current user bulunamadı";
