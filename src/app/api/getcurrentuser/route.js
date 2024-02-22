@@ -11,7 +11,7 @@ export const GET = async (request) => {
     const {
       user: { email },
     } = session;
-    console.log(email);
+    console.log(typeof email);
 
     if (!email) {
       return "user bulunamadı";
@@ -24,7 +24,7 @@ export const GET = async (request) => {
       return "current user bulunamadı";
     }
 
-    return new NextResponse(JSON.stringify(...currentUser), {
+    return new NextResponse(JSON.stringify(currentUser), {
       status: 200,
       headers: { "Access-Control-Allow-Origin": "*" },
     });
