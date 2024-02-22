@@ -106,7 +106,7 @@ export default function FormPage() {
     }
   };
 
-  if (status === "authenticated" && userQuery && userQuery[0].role === "admin") {
+  if (status === "authenticated" && currentUser.role === "admin") {
     return (
       <div className={styles.container}>
         <div className={styles.posts}>
