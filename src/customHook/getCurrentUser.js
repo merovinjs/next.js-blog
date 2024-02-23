@@ -19,7 +19,7 @@ export function UserGet() {
 export function GetCurrentUser() {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["currentuser"],
-    queryFn: async () => await fetch("https://oldbee.netlify.app/api/getcurrentuser").then((res) => res.json()),
+    queryFn: async () => await fetch("https://oldbee.netlify.app/api/auth/getCurrentUser").then((res) => res.json()),
   });
   return { data, isLoading, isError, error };
 }

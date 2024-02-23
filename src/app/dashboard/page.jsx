@@ -24,8 +24,7 @@ export default function FormPage() {
   const { data: dataQuery, isLoading, isError, error } = DataGet();
   const { data: userQuery, isLoading: userLoading, isError: userError, error: userError2 } = UserGet();
   const { data: currentUserQuery, isLoading: currentUserLoading, isError: currentUserError, error: currentUserError2 } = GetCurrentUser();
-  console.log("currentUserQuery", currentUserQuery);
-  console.log(currentUser);
+  const role = currentUserQuery?.role;
   const handleSubmit = async (e) => {
     const res = await fetch("/api/posts", {
       method: "POST",
@@ -106,7 +105,20 @@ export default function FormPage() {
     }
   };
 
-  if (status === "authenticated" && currentUser.role === "admin") {
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+  if (status === "unauthenticated") {
+    return (
+      <div className={styles.yetkisiz}>
+        lütfen
+        <span>
+          <Link href="/">Home</Link>
+        </span>
+      </div>
+    );
+  }
+  if (status === "authenticated" && role === "admin") {
     return (
       <div className={styles.container}>
         <div className={styles.posts}>
@@ -157,7 +169,7 @@ export default function FormPage() {
       </div>
     );
   }
-  if (status === "unauthenticated") {
+  if (status === "authenticated" && role === "user") {
     return (
       <div className={styles.yetkisiz}>
         Yetkiniz bulunmuyor.Blogumuza katkı sağlamak için yetki isteyiniz.

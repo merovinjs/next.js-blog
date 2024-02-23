@@ -2,7 +2,8 @@ import Bloguser from "@/blogModels/Bloguser";
 import connectDB from "@/utilty/db";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-import { options } from "../auth/[...nextauth]/options";
+import { options } from "../[...nextauth]/options";
+export const dynamic = "force-dynamic"; // defaults to auto
 export const GET = async (request) => {
   try {
     await connectDB();
@@ -26,10 +27,13 @@ export const GET = async (request) => {
 
     return new NextResponse(JSON.stringify(currentUser), {
       status: 200,
-      headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET", "Access-Control-Allow-Headers": "Content-Type, Authorization" },
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
     });
   } catch (error) {
-    console.log("ERROR", error);
     return new NextResponse("error", { status: 500 });
   }
 };
