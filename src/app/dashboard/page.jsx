@@ -111,9 +111,9 @@ export default function FormPage() {
   if (status === "unauthenticated") {
     return (
       <div className={styles.yetkisiz}>
-        lütfen
+        Lütfen giriş yapınız
         <span>
-          <Link href="/">Home</Link>
+          <Link href="/dashboard/login">Login</Link>
         </span>
       </div>
     );
