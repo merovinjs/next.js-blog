@@ -1,4 +1,6 @@
+import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+
 import bcrypt from "bcrypt";
 import Bloguser from "@/blogModels/Bloguser";
 import connectDB from "@/utilty/db";
