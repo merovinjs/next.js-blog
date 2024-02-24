@@ -5,6 +5,8 @@ import styles from "./page.module.css";
 import DarkModeToggle from "../darkModeToggle/DarkModeToggle";
 import { useRouter } from "next/navigation";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 const links = [
   {
     id: 1,
@@ -39,6 +41,8 @@ const links = [
   },
 ];
 const Navbar = () => {
+  const { data: session, status } = useSession();
+  const name = session?.user?.name;
   const navRef = useRef();
 
   const showNavbar = () => {
@@ -46,26 +50,41 @@ const Navbar = () => {
   };
   const router = useRouter();
   return (
-    <div className={styles.container}>
-      <Link href={"/"} className={styles.logo}>
-        OLD BEE
-      </Link>
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <Link href={"/"} className={styles.logo}>
+          OLD BEE
+        </Link>
 
-      <nav ref={navRef} className={styles.links}>
-        {links.map((link) => (
-          <Link onClick={showNavbar} className={styles.link} key={link.id} href={link.path}>
-            {link.text}
-          </Link>
-        ))}
-        <button className={styles.close_btn + " " + styles.nav_btn} onClick={showNavbar}>
-          <FaTimes />
+        <nav ref={navRef} className={styles.links}>
+          {links.map((link) => (
+            <Link onClick={showNavbar} className={styles.link} key={link.id} href={link.path}>
+              {link.text}
+            </Link>
+          ))}
+
+          <button className={styles.close_btn + " " + styles.nav_btn} onClick={showNavbar}>
+            <FaTimes />
+          </button>
+        </nav>
+        <button className={styles.nav_btn} onClick={showNavbar}>
+          <FaBars />
         </button>
-      </nav>
-      <button className={styles.nav_btn} onClick={showNavbar}>
-        <FaBars />
-      </button>
-      <div className={styles.toggle}>
-        <DarkModeToggle />
+        <div className={styles.toggle}>
+          <DarkModeToggle />
+        </div>
+      </div>
+      <div className={styles.user}>
+        {status === "authenticated" && <span className={styles.name}>{name}</span>}
+        {status === "authenticated" && (
+          <span className={styles.logout}>
+            <button>
+              {" "}
+              <button onClick={() => signOut()}>Çıkış yap</button>
+            </button>{" "}
+          </span>
+        )}
+        {status === "unauthenticated" && <Link href={"/dashboard/login"}>Giriş yapınız...</Link>}
       </div>
     </div>
   );
