@@ -80,7 +80,7 @@ const Navbar = () => {
           <span className={styles.logout}>
             <button>
               {" "}
-              <button onClick={() => signOut()}>Çıkış yap</button>
+              <button onClick={() => signOut({ callbackUrl: "https://oldbee.netlify.app/dashboard/login" })}>Çıkış yap</button>
             </button>{" "}
           </span>
         )}

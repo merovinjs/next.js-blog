@@ -35,7 +35,7 @@ export const options = {
     }),
   ],
   pages: {
-    error: "/login",
+    error: "/dashboard/login",
   },
   secret: process.env.NEXT_AUTH_SECRET,
 };
