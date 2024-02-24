@@ -17,7 +17,7 @@ export default function FormPage() {
   const [content, setContent] = useState("");
   const [username, setUsername] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  const [currentUser, setCurrentUser] = useState("");
+
   const router = useRouter();
 
   const { data: session, status } = useSession();

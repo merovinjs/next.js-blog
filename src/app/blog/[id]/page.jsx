@@ -7,9 +7,7 @@ import { dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import ClipButton from "@/components/ClipButton/ClipButton";
 
 async function getData(id) {
-  const res = await fetch(`https://oldbee.netlify.app/api/posts/${id}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(`https://oldbee.netlify.app/api/posts/${id}`);
 
   if (!res.ok) {
     return notFound();

@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.user {
+  width: 90%;
+  text-align: end;
+}
 .container {
   display: grid;
   grid-template-columns: 6fr 1fr 1fr;
