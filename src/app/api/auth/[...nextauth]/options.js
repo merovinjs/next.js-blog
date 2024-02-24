@@ -1,6 +1,4 @@
-import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
 import bcrypt from "bcrypt";
 import Bloguser from "@/blogModels/Bloguser";
 import connectDB from "@/utilty/db";
@@ -37,7 +35,7 @@ export const options = {
     }),
   ],
   pages: {
-    error: "/dashboard/login",
+    error: "/login",
   },
   secret: process.env.NEXT_AUTH_SECRET,
 };
