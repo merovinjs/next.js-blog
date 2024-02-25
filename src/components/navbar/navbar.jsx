@@ -6,6 +6,7 @@ import DarkModeToggle from "../darkModeToggle/DarkModeToggle";
 import { useRouter } from "next/navigation";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useSession } from "next-auth/react";
+import { LuLogOut } from "react-icons/lu";
 import { signOut } from "next-auth/react";
 const links = [
   {
@@ -75,13 +76,13 @@ const Navbar = () => {
         </div>
       </div>
       <div className={styles.user}>
-        {status === "authenticated" && <span className={styles.name}>{name}</span>}
+        {status === "authenticated" && <span className={styles.name}>Hoşgeldin...{name}</span>}
         {status === "authenticated" && (
           <span className={styles.logout}>
-            <button>
-              {" "}
-              <button>Çıkış yap</button>
-            </button>{" "}
+            <button className={styles.logbtn} onClick={() => signOut()}>
+              Çıkış yap
+              <LuLogOut size={12} color="blue" />
+            </button>
           </span>
         )}
         {status === "unauthenticated" && <Link href={"/dashboard/login"}>Giriş yapınız...</Link>}

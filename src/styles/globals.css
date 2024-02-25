@@ -112,17 +112,19 @@ a {
   background-color: white;
   color: #111;
   a,
-  span {
-    color: var(--mozillablack);
+  h2 {
+    color: var(--dark-blue);
   }
 }
 .dark {
   background-color: #111;
-  a,
-  span {
+  color: white;
+  a {
     color: var(--mozillablue);
   }
-  color: white;
+  h2 {
+    color: var(--mozillawhite);
+  }
 }
 
 .container {

@@ -5,6 +5,7 @@
 }
 .user {
   width: 90%;
+  padding-right: 10px;
   text-align: end;
 }
 .container {
@@ -15,7 +16,13 @@
   font-size: larger;
   width: 90%;
 }
-
+.logbtn {
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px 8px;
+  background-color: var(--mozillagrenn);
+  margin-left: 25px;
+}
 .logo {
   font-family: "Dancing Script", cursive;
   font-size: xx-large;
