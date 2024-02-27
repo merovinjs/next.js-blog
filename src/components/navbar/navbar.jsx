@@ -50,6 +50,10 @@ const Navbar = () => {
     navRef.current.classList.toggle(styles.responsive_nav);
   };
   const router = useRouter();
+  const handleLogout = () => {
+    signOut();
+    router.push("/dashboard/login");
+  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -79,7 +83,7 @@ const Navbar = () => {
         {status === "authenticated" && <span className={styles.name}>Hoşgeldin...{name}</span>}
         {status === "authenticated" && (
           <span className={styles.logout}>
-            <button className={styles.logbtn} onClick={() => signOut()}>
+            <button className={styles.logbtn} onClick={() => handleLogout()}>
               Çıkış yap
               <LuLogOut size={12} color="blue" />
             </button>
