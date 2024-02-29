@@ -29,7 +29,7 @@ const Login = () => {
     });
 
     if (result?.error) {
-      // Handle error
+      console.log(result.error);
     } else {
       router.push("/dashboard");
     }
@@ -40,18 +40,8 @@ const Login = () => {
       <h2 className={styles.subtitle}>Please sign in to see the dashboard.</h2>
 
       <form onSubmit={handleSubmit} className={styles.form}>
-        <input
-          type="text"
-          placeholder="Email"
-          required
-          className={styles.input}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          className={styles.input}
-        />
+        <input type="text" placeholder="Email" required className={styles.input} />
+        <input type="password" placeholder="Password" required className={styles.input} />
         <button className={styles.button}>Login</button>
       </form>
 

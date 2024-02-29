@@ -1,6 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+const isDevelopment = process.env.NODE_ENV === "development";
 
 export function DataGet() {
   const { data, isLoading, isError, error } = useQuery({
@@ -16,10 +17,14 @@ export function UserGet() {
   });
   return { data, isLoading, isError, error };
 }
-export function GetCurrentUser() {
+export function GetCrntUser() {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["currentuser"],
-    queryFn: async () => await fetch("https://oldbee.netlify.app/api/auth/getCurrentUser").then((res) => res.json()),
+    queryFn: async () => {
+      const apiUrl = isDevelopment ? "http://localhost:3000/api/auth/getCurrentUser" : "https://oldbee.netlify.app/api/auth/getCurrentUser";
+      const response = await fetch(apiUrl);
+      return response.json();
+    },
   });
   return { data, isLoading, isError, error };
 }

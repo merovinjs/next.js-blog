@@ -3,7 +3,6 @@ import connectDB from "@/utilty/db";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import { options } from "../[...nextauth]/options";
-export const dynamic = "force-dynamic"; // defaults to auto
 export const GET = async (request) => {
   try {
     await connectDB();
@@ -12,17 +11,15 @@ export const GET = async (request) => {
     const {
       user: { email },
     } = session;
-    console.log(typeof email);
 
     if (!email) {
-      return "user bulunamadı";
+      return new NextResponse("Kullanıcı bulunamadı", { status: 401 });
     }
-    console.log(session);
     const currentUser = await Bloguser.findOne({
       email: email,
     });
     if (!currentUser) {
-      return "current user bulunamadı";
+      return new NextResponse("Kullanıcı bulunamadı", { status: 404 });
     }
 
     return new NextResponse(JSON.stringify(currentUser), {

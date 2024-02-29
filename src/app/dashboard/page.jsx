@@ -7,7 +7,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { DataGet, GetCurrentUser, UserGet } from "@/customHook/getCurrentUser";
+import { DataGet, GetCrntUser, UserGet } from "@/customHook/getCurrentUser";
 
 export default function FormPage() {
   const [title, setTitle] = useState("");
@@ -23,7 +23,7 @@ export default function FormPage() {
   const { data: session, status } = useSession();
   const { data: dataQuery, isLoading, isError, error } = DataGet();
   const { data: userQuery, isLoading: userLoading, isError: userError, error: userError2 } = UserGet();
-  const { data: currentUserQuery, isLoading: currentUserLoading, isError: currentUserError, error: currentUserError2 } = GetCurrentUser();
+  const { data: currentUserQuery, isLoading: currentUserLoading, isError: currentUserError, error: currentUserError2 } = GetCrntUser();
   const role = currentUserQuery?.role;
   const handleSubmit = async (e) => {
     const res = await fetch("/api/posts", {

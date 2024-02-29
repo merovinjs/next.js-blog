@@ -1,6 +1,4 @@
-import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
 import bcrypt from "bcrypt";
 import Bloguser from "@/blogModels/Bloguser";
 import connectDB from "@/utilty/db";
@@ -13,6 +11,7 @@ export const options = {
       async authorize(credentials) {
         //Check if the user exists.
         await connectDB();
+        console.log("connecteddb");
 
         try {
           const user = await Bloguser.findOne({
