@@ -30,7 +30,7 @@ export const options = {
             throw new Error("User not found!");
           }
         } catch (err) {
-          throw new Error(err);
+          return null | undefined;
         }
       },
     }),

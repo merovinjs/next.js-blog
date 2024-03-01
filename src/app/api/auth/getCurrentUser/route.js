@@ -3,11 +3,20 @@ import connectDB from "@/utilty/db";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import { options } from "../[...nextauth]/options";
+
 export const GET = async (request) => {
   try {
     await connectDB();
 
     const session = await getServerSession(options);
+    if (!session) {
+      return new NextResponse(null, {
+        status: 302,
+        headers: {
+          Location: "/",
+        },
+      });
+    }
     const {
       user: { email },
     } = session;

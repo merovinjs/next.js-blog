@@ -4,7 +4,12 @@
   flex-direction: column;
 }
 .user {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   width: 90%;
+  min-height: 40px;
+  height: auto;
   padding-right: 10px;
   text-align: end;
 }

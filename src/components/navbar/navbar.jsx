@@ -80,7 +80,8 @@ const Navbar = () => {
         </div>
       </div>
       <div className={styles.user}>
-        {status === "authenticated" && <span className={styles.name}>Hoşgeldin...{name}</span>}
+        {<div>&nbsp;</div>}
+        {status === "authenticated" && <span className={styles.name}>Hoşgeldin &nbsp;{name}</span>}
         {status === "authenticated" && (
           <span className={styles.logout}>
             <button className={styles.logbtn} onClick={() => handleLogout()}>
