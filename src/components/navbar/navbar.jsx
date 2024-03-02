@@ -8,6 +8,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { useSession } from "next-auth/react";
 import { LuLogOut } from "react-icons/lu";
 import { signOut } from "next-auth/react";
+
 const links = [
   {
     id: 1,
@@ -52,7 +53,7 @@ const Navbar = () => {
   const router = useRouter();
   const handleLogout = () => {
     signOut();
-    router.push("/dashboard/login");
+    router.push("/");
   };
   return (
     <div className={styles.wrapper}>

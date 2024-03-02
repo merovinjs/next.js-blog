@@ -31,7 +31,7 @@ const Login = () => {
     if (result?.error) {
       console.log(result.error);
     } else {
-      router.push("/dashboard");
+      router.push("/");
     }
   };
 
