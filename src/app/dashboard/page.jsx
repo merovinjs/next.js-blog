@@ -47,8 +47,9 @@ export default function FormPage() {
 
   const { data: session, status } = useSession();
   const { data: dataQuery, isLoading, isError, error } = DataGet();
+
   const { data: currentUserQuery, isLoading: currentUserLoading, isError: currentUserError, error: currentUserError2 } = GetCrntUser();
-  const role = currentUserQuery?.role || null;
+  const role = currentUserQuery?.role;
   const handleSubmit = async (e) => {
     const res = await fetch("/api/posts", {
       method: "POST",
