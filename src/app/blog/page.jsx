@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-async function getData() {
+export async function getData() {
   const res = await fetch("https://oldbee.netlify.app/api/posts");
 
   if (!res.ok) {

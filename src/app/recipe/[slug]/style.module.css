@@ -1,0 +1,31 @@
+.postContent {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.postContent h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+.postContent blockquote {
+  background-color: lightcoral;
+}
+.postContent h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.postContent p {
+  margin-bottom: 10px;
+}
+.postContent pre {
+  font-family: Consolas, Monaco, "Courier New", monospace;
+  background-color: rgb(37, 22, 22);
+
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  white-space: pre-wrap;
+}

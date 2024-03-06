@@ -18,6 +18,7 @@ const ClipButton = ({ text }) => {
         </button>
       ) : (
         <button
+          style={{ cursor: "pointer" }}
           onClick={() => {
             navigator.clipboard.writeText(text);
             setCopy(true);

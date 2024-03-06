@@ -7,8 +7,9 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BiEditAlt } from "react-icons/bi";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { DataGet, GetCrntUser, UserGet } from "@/customHook/getCurrentUser";
-
+import { DataGet, GetCrntUser } from "@/customHook/getCurrentUser";
+import "react-quill/dist/quill.snow.css";
+import { revalidatePath } from "next/cache";
 export default function FormPage() {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -19,12 +20,35 @@ export default function FormPage() {
   const [isEditing, setIsEditing] = useState(false);
 
   const router = useRouter();
+  let toolbarOptions = [
+    ["bold", "italic", "underline", "strike"], // toggled buttons
+    ["blockquote", "code-block"],
+    ["markdown"],
+    ["link", "image", "video", "formula"],
+
+    [{ header: 1 }, { header: 2 }], // custom button values
+    [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+    [{ script: "sub" }, { script: "super" }], // superscript/subscript
+    [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+    [{ direction: "rtl" }], // text direction
+
+    [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+    [{ font: [] }],
+    [{ align: [] }],
+
+    ["clean"], // remove formatting button
+  ];
+  const modules = {
+    toolbar: toolbarOptions,
+  };
 
   const { data: session, status } = useSession();
   const { data: dataQuery, isLoading, isError, error } = DataGet();
-  const { data: userQuery, isLoading: userLoading, isError: userError, error: userError2 } = UserGet();
   const { data: currentUserQuery, isLoading: currentUserLoading, isError: currentUserError, error: currentUserError2 } = GetCrntUser();
-  const role = currentUserQuery?.role;
+  const role = currentUserQuery?.role || null;
   const handleSubmit = async (e) => {
     const res = await fetch("/api/posts", {
       method: "POST",
@@ -46,6 +70,7 @@ export default function FormPage() {
       setTitle("");
       setContent("");
       setUsername("");
+      revalidatePath("/");
     } else {
       console.log("hata");
     }
@@ -108,7 +133,7 @@ export default function FormPage() {
   if (status === "loading") {
     return <div>Loading...</div>;
   }
-  if (status === "unauthenticated") {
+  if (status === "unauthenticated" || role === null) {
     return (
       <div className={styles.yetkisiz}>
         Lütfen giriş yapınız
@@ -154,13 +179,17 @@ export default function FormPage() {
           <label htmlFor="img">Image:</label>
           <input type="text" id="img" value={img} onChange={(e) => setImg(e.target.value)} className={styles.input} />
           <br />
-          <label htmlFor="content">Content:</label>
-          <textarea type="text" id="content" value={content} onChange={(e) => setContent(e.target.value)} className={styles.input} />
+          <label>Content:</label>
+
+          {/* <ReactQuill modules={modules} theme="snow" value={content} onChange={setContent} /> */}
+          <br />
+          <br />
           <br />
           <br />
           <br />
           <label htmlFor="username">Username:</label>
           <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} className={styles.input} />
+
           <br />
           <button type="submit" className={styles.button}>
             Submit
