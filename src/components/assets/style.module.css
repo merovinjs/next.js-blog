@@ -1,8 +1,11 @@
 .Wrapper {
   position: relative;
+  max-width: 700px;
+  width: auto;
 }
 .CopyButton {
   position: absolute;
+
   right: 0;
   top: 0;
   z-index: 1;

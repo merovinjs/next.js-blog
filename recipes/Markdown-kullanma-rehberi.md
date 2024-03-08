@@ -1,14 +1,39 @@
 ---
-title: "Using AI to generate poetry"
-subtitle: "I used GPT-3 to generate poetry and other creative content."
-date: "2021-08-27"
+title: "Markdown-kullanma-rehberi"
+subtitle: "Next.js projemde Markdown kullanma kararı aldıktantan sonra, markdown nasıl kullandığımı anlatan bir blog, bu blog yazısında markdown kullanımını ve faydalarını göreceğiz"
+date: "2024-03-07"
 ---
 
-I was recently granted access to the [OpenAI GPT-3 Beta](https://beta.openai.com/), a very powerful language model that can be used to do all sorts of magic like chat bot generation, article summary, and a [lot more cool stuff](https://beta.openai.com/examples).
+# Markdown Nasıl kullanırız?
 
-But the application that really excited me was creative writing (stuff like SEO generation is cool and all, but a also a bit dry for my taste).
+Markdown da #(diyez) işareti HTML de "h" etiketine karşılık gelir # işareti konulduktan sonra yazılan ifade boşluk olmalı ve yeni satırda başlmalıdır.#h1,##h2,###h3,####h4,#####h5,######h6
+Örnek gösterim;
 
-I had previously seen [AI Dungeon](https://play.aidungeon.io/) use GPT to create an interactive text adventure game (try it, it's fun!) and that got me curious about what else the AI was capable of — especially when elements of both _creativity_ and _structure_ were involved.
+# Örnek h1 başlığı
+
+## Örnek h2 başlığı
+
+### Örnek h3 başlığı
+
+#### Örnek h4 başlığı
+
+##### Örnek h5 başlığı
+
+###### Örnek h6 başlığı
+
+-Markdown kullanırken HTML deki "p" etiketi herhangi bir işaret kullanılmadan yazılır.
+
+This sentence uses `$` delimiters to show math inline: $\sqrt{3x-1}+(1+x)^2$
+
+Bu cümle markdownda paragraf için yazılmıştır.
+
+- list item
+
+* list item
+
+> Bloqute
+
+> I had previously seen [AI Dungeon](https://play.aidungeon.io/) use GPT to create an interactive text adventure game (try it, it's fun!) and that got me curious about what else the AI was capable of — especially when elements of both _creativity_ and _structure_ were involved.
 
 I decided to test it against poetry and story generation, and this is the resulting write-up of those experiments.
 
@@ -26,6 +51,10 @@ We can literally ask it to do anything. For example, if I ask for steps to bake 
 3. Stir cake mix, oil, eggs, and water in a large bowl with a spoon until blended.
 4. Pour batter into prepared pan.
 ```
+
+   <Code language="javascript">
+   const names=["ssdfsd","fsdfsd","dsfsdfsd"]
+   </Code>
 
 Alternatively, I can provide it with an example of what I want. Such as:
 

@@ -1,13 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { CiCircleCheck } from "react-icons/ci";
+import style from "./style.module.css";
 const ClipButton = ({ text }) => {
   const [copy, setCopy] = useState(false);
   return (
     <>
       {copy ? (
         <button
-          style={{ textAlign: "center" }}
+          className={style.clicked}
           onClick={() => {
             navigator.clipboard.writeText(text);
           }}>
@@ -18,7 +19,7 @@ const ClipButton = ({ text }) => {
         </button>
       ) : (
         <button
-          style={{ cursor: "pointer" }}
+          className={style.unClicked}
           onClick={() => {
             navigator.clipboard.writeText(text);
             setCopy(true);
