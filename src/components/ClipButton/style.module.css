@@ -3,14 +3,10 @@
   color: var(--selective-yellow);
   padding: 4px 8px;
   border: solid 1px var(--mozillablue);
-  margin-top: 5px;
-  margin-right: 5px;
   padding: 4px 8px;
 }
 .unClicked {
   border: solid 1px var(--mozillablue);
-  margin-top: 5px;
-  margin-right: 5px;
   padding: 4px 8px;
   background-color: var(--light-gray);
   color: var(--black);

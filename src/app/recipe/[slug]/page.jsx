@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import getPostMetadata from "@/utilty/getPostsMetaData";
 import style from "./style.module.css";
 import Code from "@/components/assets/Code";
+import CodePenEmbed from "@/components/CodeEditör/CodePenEmbed";
 function getPostContent(slug) {
   const folder = "recipes/";
   const file = folder + `${slug}.md`;
@@ -37,6 +38,9 @@ export default function RecipePage(props) {
         overrides: {
           Code: {
             component: Code,
+          },
+          Codepen: {
+            component: CodePenEmbed,
           },
         },
       }}>

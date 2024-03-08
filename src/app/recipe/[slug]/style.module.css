@@ -1,7 +1,11 @@
 .postContent {
-  font-family: Arial, sans-serif;
   font-size: 16px;
-  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 95%;
+  min-width: 100vh;
+  height: auto;
 }
 
 .postContent h1 {
@@ -30,12 +34,9 @@
   list-style: square outside none;
 }
 .postContent ul > li {
-  background: #ff9999;
   padding: 20px;
 }
 .postContent ul li {
-  background: #ffe5e5;
-  color: darkred;
   padding: 5px;
   margin-left: 35px;
 }

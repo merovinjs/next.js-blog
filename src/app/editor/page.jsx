@@ -1,12 +1,7 @@
-import CodepenEmbed from "@/components/CodeEditör/CodepenEmbed";
 import React from "react";
 
-const MyPage = () => {
-  return (
-    <div>
-      <CodepenEmbed />
-    </div>
-  );
+const Editör = () => {
+  return <div>page</div>;
 };
 
-export default MyPage;
+export default Editör;
