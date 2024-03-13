@@ -8,7 +8,7 @@ import Code from "@/components/assets/Code";
 import CodePenEmbed from "@/components/CodeEditör/CodePenEmbed";
 
 function getPostContent(slug) {
-  const folder = "next-js/";
+  const folder = "next/";
   const file = folder + `${slug}.md`;
   const content = fs.readFileSync(file, "utf8");
   const matterResult = matter(content);
@@ -16,7 +16,7 @@ function getPostContent(slug) {
 }
 
 export const generateStaticParams = async () => {
-  const posts = getPostMetadata("next-js");
+  const posts = getPostMetadata("next");
   return posts.map((post) => ({ slug: post.slug }));
 };
 

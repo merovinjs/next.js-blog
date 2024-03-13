@@ -2,7 +2,7 @@ import PostCard from "@/components/PostsCard/PostCard";
 import getPostMetadata from "@/utilty/getPostsMetaData";
 
 export default function Home() {
-  const postMetadata = getPostMetadata("next-js");
+  const postMetadata = getPostMetadata("next");
 
   return (
     <main>

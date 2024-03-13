@@ -1,5 +1,5 @@
 ---
-title: "next-js-ile-markdown-kullanma-rehberi"
+title: "next-ile-markdown-kullanma-rehberi"
 subtitle: "Next.js projemde Markdown kullanma kararı aldıktantan sonra, markdown nasıl kullandığımı anlatan bir blog, bu blog yazısında markdown kullanımını ve faydalarını göreceğiz,markdown için custom css nasıl yazabilirizbunu anlayacağız"
 date: "2024-03-07"
 ---
@@ -23,7 +23,7 @@ Markdown da #(diyez) işareti HTML de "h" etiketine karşılık gelir # işareti
 
 -Burada fark etmenizi istediğim nokta "h1" etiketinin boyutu, genelde yaklaşık 32px(2rem) dir.Tarayıcılar arasında bu boyut farklılık gösterebilir.Bizim oluşturduğumuz "h1" etiketinin boyutu çok daha küçük çünkü markdown yazımızdaki "h1" etiketimize CSS ile ulaşarak fontunu istediğimiz değere çevirdik.Peki bunu nasıl yaptık?
 
-Projem framwork olarak [next-js](https://www.npmjs.com/package/next) kullanıyorum markdown yazılarımı stillendirmek ve render etmek içinde [markdown-to-jsx](https://www.npmjs.com/package/markdown-to-jsx) paketini kullanıyorum.
+Projem framwork olarak [next](https://www.npmjs.com/package/next) kullanıyorum markdown yazılarımı stillendirmek ve render etmek içinde [markdown-to-jsx](https://www.npmjs.com/package/markdown-to-jsx) paketini kullanıyorum.
 
 <Code language="javascript">
 "use client";
