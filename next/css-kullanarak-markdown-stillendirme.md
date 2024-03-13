@@ -36,5 +36,3 @@ Projem framwork olarak [next](https://www.npmjs.com/package/next) kullanıyorum 
 export default DenemeComp;
 
 </Code>
-
-<Codepen />
