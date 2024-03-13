@@ -17,7 +17,7 @@ const CodePenEmbed = () => {
         </Link>
       </div>
       <div className={styles.iframeContainer}>
-        <iframe title="React Calculator" src={`//codepen.io/oldbeedev/embed/GRwmWbG?editors=1010?height=265&theme-id=dark&default-tab=result`} frameborder="no" allowtransparency="false" allowfullscreen="false"></iframe>
+        <iframe title="React Calculator" src={`//codepen.io/oldbeedev/embed/GRwmWbG?editors=1010?height=265&theme-id=dark&default-tab=result`} allowTransparency="false" allowFullScreen="false"></iframe>
       </div>
     </div>
   );
