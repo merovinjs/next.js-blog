@@ -26,20 +26,19 @@ export async function generateMetadata({ params, searchParams }) {
     title: `${id.replaceAll("_", " ")}`,
   };
 }
-
+const markdownoptions = {
+  overrides: {
+    Codepen: {
+      component: CodePenEmbed,
+    },
+    Code: {
+      component: Code,
+    },
+  },
+};
 export default function RecipePage(props) {
   const slug = props.params.slug;
   const post = getPostContent(slug);
-  const markdownoptions = {
-    overrides: {
-      Codepen: {
-        component: CodePenEmbed,
-      },
-      Code: {
-        component: Code,
-      },
-    },
-  };
 
   return (
     <div className={style.wrapper}>
