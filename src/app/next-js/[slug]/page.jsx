@@ -4,9 +4,8 @@ import fs from "fs";
 import matter from "gray-matter";
 import getPostMetadata from "@/utilty/getPostsMetaData";
 import style from "./style.module.css";
-
-import CodePenEmbed from "@/components/CodeEditör/CodePenEmbed";
 import Code from "@/components/assets/Code";
+import CodePenEmbed from "@/components/CodeEditör/CodePenEmbed";
 
 function getPostContent(slug) {
   const folder = "next-js/";
@@ -31,7 +30,6 @@ export async function generateMetadata({ params, searchParams }) {
 export default function RecipePage(props) {
   const slug = props.params.slug;
   const post = getPostContent(slug);
-  console.log("post", post);
   const markdownoptions = {
     overrides: {
       Codepen: {
