@@ -1,3 +1,9 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 .postContent {
   font-size: 16px;
   display: flex;
@@ -6,6 +12,9 @@
   max-width: 95%;
   min-width: 100vh;
   height: auto;
+}
+.postContent p {
+  color: red;
 }
 
 .postContent h1 {
@@ -25,10 +34,7 @@
   margin-left: 1em;
   background-color: lightgrey;
 }
-.postContent h2 {
-  font-size: 20px;
-  font-weight: bold;
-}
+
 .postContent ol > li {
   color: red;
   list-style: square outside none;
@@ -40,6 +46,18 @@
   padding: 5px;
   margin-left: 35px;
 }
-.postContent code {
-  max-width: 700px;
-}
+/* .postContent code {
+  font: 16px Monaco, "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
+  color: f9f9f9;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  background-color: #52595d;
+  display: inline-block;
+  margin: 0px;
+  padding: 5px 15px;
+} */
