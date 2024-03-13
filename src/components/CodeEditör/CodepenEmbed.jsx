@@ -4,7 +4,6 @@ import React from "react";
 import styles from "./page.module.css";
 import { FaArrowDown } from "react-icons/fa";
 const CodePenEmbed = () => {
-  //const data = [{ src: "GRwmWbG" }, { src: "dyQWvXX" }];
   return (
     <div className={styles.container}>
       <div className={styles.linkGroup}>
@@ -17,7 +16,7 @@ const CodePenEmbed = () => {
         </Link>
       </div>
       <div className={styles.iframeContainer}>
-        <iframe title="React Calculator" src={`//codepen.io/oldbeedev/embed/GRwmWbG?editors=1010?height=265&theme-id=dark&default-tab=result`} allowTransparency="false" allowFullScreen="false"></iframe>
+        <iframe title="React Calculator" src={`//codepen.io/oldbeedev/embed/GRwmWbG?editors=1010?height=265&theme-id=dark&default-tab=result`}></iframe>
       </div>
     </div>
   );
