@@ -5,7 +5,7 @@ import matter from "gray-matter";
 import getPostMetadata from "@/utilty/getPostsMetaData";
 import style from "./style.module.css";
 import Code from "@/components/assets/Code";
-import Codepenembed from "@/components/codeeditör/Codepenembed";
+import { Codepenembed } from "@/components/codeeditör/Codepenembed";
 
 function getPostContent(slug) {
   const folder = "next/";
@@ -37,11 +37,11 @@ export default function RecipePage(props) {
         className={style.postContent}
         options={{
           overrides: {
-            Code: {
-              component: Code,
-            },
             Codepen: {
               component: Codepenembed,
+            },
+            Code: {
+              component: Code,
             },
           },
         }}>
