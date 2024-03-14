@@ -5,7 +5,7 @@ import matter from "gray-matter";
 import getPostMetadata from "@/utilty/getPostsMetaData";
 import style from "./style.module.css";
 import Code from "@/components/assets/Code";
-import { Codepenembed } from "@/components/codeeditör/Codepenembed";
+import { Codepenembed } from "@/components/codeeditor/Codepenembed";
 
 function getPostContent(slug) {
   const folder = "next/";
