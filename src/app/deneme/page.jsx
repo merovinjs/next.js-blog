@@ -1,11 +1,5 @@
-import Tiptap from "@/components/Tiptap/Tiptap";
-
-const Deneme = () => {
-  return (
-    <div>
-      <Tiptap />
-    </div>
-  );
+const Denemepage = () => {
+  return <div>Denemepage</div>;
 };
 
-export default Deneme;
+export default Denemepage;
