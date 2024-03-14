@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import styles from "./page.module.css";
 import { FaArrowDown } from "react-icons/fa";
-const CodePenEmbed = () => {
+const Codepenembed = () => {
   return (
     <div className={styles.container}>
       <div className={styles.linkGroup}>
@@ -22,4 +22,4 @@ const CodePenEmbed = () => {
   );
 };
 
-export default CodePenEmbed;
+export default Codepenembed;
